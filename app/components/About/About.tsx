@@ -4,7 +4,7 @@ export const About = () => {
   const aboutClasses = [
     "m-t-1em",
     "font-sans-2",
-    "font-size-2",
+    "font-size-3",
     "color-text-primary"
   ].join(' ');
 

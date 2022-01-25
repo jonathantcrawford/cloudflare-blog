@@ -5,6 +5,7 @@ import {
 import { useSpring, animated } from "react-spring";
 
 import { About } from '~/components/About/About';
+import { Footer } from '~/components/Footer/Footer';
 
 export default function Index() {
   const fade = useSpring({ 
@@ -32,7 +33,7 @@ export default function Index() {
       
 
     <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
-      Footer
+      <Footer/>
     </animated.div>
     </>
   );

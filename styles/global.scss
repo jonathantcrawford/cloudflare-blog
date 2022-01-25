@@ -61,14 +61,15 @@ body {
     --color-text-primary: #ffffff;
 
     // bg-colors
-    --bg-color-1: #000000;
+    --bg-color-primary: #000000;
 
     // fonts
     --font-sans-1: "December";
     --font-sans-2: "Hamlin";
 
     --font-size-1: 8vh;
-    --font-size-2: 2.5vh;
+    --font-size-2: 5vh;
+    --font-size-3: 2.5vh;
 
 }
 
@@ -82,12 +83,16 @@ body {
     color: var(--color-cta-primary-hover);
 }
 
+.cursor-pointer:hover {
+    cursor: pointer;
+}
+
 .color-text-primary {
     color: var(--color-text-primary);
 }
 
-.bg-color-1 {
-    background-color: var(--bg-color-1);
+.bg-color-primary {
+    background-color: var(--bg-color-primary);
 }
 
 .font-sans-1 {
@@ -111,6 +116,10 @@ body {
     font-size: var(--font-size-2);
 }
 
+.font-size-3 {
+    font-size: var(--font-size-3);
+}
+
 .text-dec-none {
     text-decoration: none;
 }
@@ -128,6 +137,10 @@ body {
 
 .mn-h-100vh {
     min-height: 100vh;
+}
+
+.mn-h-40mm {
+    min-height: 40mm;
 }
 
 .mx-w-100vw {
@@ -150,6 +163,21 @@ body {
     line-height: 1.618em;
 }
 
+.flex {
+    display: flex;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.justify-content-space-evenly {
+    justify-content: space-evenly;
+}
+
+.align-items-center {
+    align-items: center;
+}
 
 .grid {
     display: grid;
@@ -157,4 +185,8 @@ body {
 
 .grid-ps-center {
     place-self: center;
+}
+
+.p-b-4em {
+    padding-bottom: 4em;
 }
