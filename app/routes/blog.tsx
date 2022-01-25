@@ -3,6 +3,8 @@ import {
   } from "remix";
   
   import { useSpring, animated } from "react-spring";
+
+  import { Footer } from '~/components/Footer/Footer';
   
   export default function Blog() {
     const fade = useSpring({ 
@@ -29,8 +31,8 @@ import {
         </animated.div>
         
   
-      <animated.div  className="layout__footer" style={fade}>
-        Footer
+      <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
+        <Footer/>
       </animated.div>
       </>
     );

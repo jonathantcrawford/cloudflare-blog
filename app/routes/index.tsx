@@ -23,7 +23,7 @@ export default function Index() {
       frequency: 0.4,
       damping: 0.3
     }
-  })
+  });
 
   return (
     <>

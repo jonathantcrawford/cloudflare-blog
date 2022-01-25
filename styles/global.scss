@@ -1,7 +1,10 @@
+
+
 body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans';
 }
 
 *::-webkit-scrollbar {
@@ -9,46 +12,6 @@ body {
 }
 
 // FONTS
-@font-face {
-    font-family: "December";
-    src: url("/static/fonts/December/DecemberMedium.woff2") format("woff2"),
-        url("/static/fonts/December/DecemberMedium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Hamlin';
-    src: url('/static/fonts/Hamlin/Hamlin-ExtraBold.woff2') format('woff2'),
-        url('/static/fonts/Hamlin/Hamlin-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Hamlin';
-    src: url('/static/fonts/Hamlin/Hamlin-Light.woff2') format('woff2'),
-        url('/static/fonts/Hamlin/Hamlin-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Hamlin';
-    src: url('/static/fonts/Hamlin/Hamlin-Regular.woff2') format('woff2'),
-        url('/static/fonts/Hamlin/Hamlin-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Hamlin';
-    src: url('/static/fonts/Hamlin/Hamlin-Bold.woff2') format('woff2'),
-        url('/static/fonts/Hamlin/Hamlin-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-  }
   
 
 

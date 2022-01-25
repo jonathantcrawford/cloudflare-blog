@@ -16,9 +16,16 @@ import { Header } from '~/components/Header/Header';
 import globalStylesUrl from "~/styles/global.css";
 import rootStylesUrl from "~/styles/pages/root.css";
 
+import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
+import decemberFontStylesUrl from "~/styles/fonts/december.css";
+
+
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: globalStylesUrl },
+    {rel: "icon", href: "/static/images/favicon.png" },
+    { rel: "stylesheet",  href: hamlinFontStylesUrl },
+    { rel: "stylesheet",  href: decemberFontStylesUrl },
+    { rel: "stylesheet",  href: globalStylesUrl },
     { rel: "stylesheet", href: rootStylesUrl }
   ];
 };
@@ -26,10 +33,30 @@ export const links: LinksFunction = () => {
 
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  const description = "My own dev blog for various topics.";
+  const title = "Jon Crawford";
+  return { 
+    title,
+    description,
+    keywords: "developer,dev,blog",
+    "og:url": "https://joncrawford.me/",
+    "og:type": "website",
+    "og:title": title,
+    "og:description": description,
+    "og:image:type": "image/png",
+    "og:image": "https://joncrawford.me/static/images/og-preview.png",
+    "twitter:image": "https://joncrawford.me/static/images/og-preview.png",
+    "twitter:url": "https://joncrawford.me/",
+    "twitter:card": "summary_large_image",
+    "twitter:creator": "@jon_t_craw",
+    "twitter:site": "@jon_t_craw",
+    "twitter:title": title,
+    "twitter:description": description
+  };
 };
 
 export default function App() {
+
   const fade = useSpring({ 
     to: { opacity: 1 }, 
     from: { opacity: 0 },
@@ -38,14 +65,6 @@ export default function App() {
     }
   });
 
-  const bounce = useSpring({ 
-    to: { y: "0%" }, 
-    from: { y: "100%" },
-    config: {
-      frequency: 0.4,
-      damping: 0.3
-    }
-  })
 
   return (
     <html lang="en" className="bg-color-primary">
