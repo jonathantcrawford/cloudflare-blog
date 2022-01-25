@@ -5,7 +5,7 @@
   "license": "",
   "scripts": {
     "postinstall": "remix setup cloudflare-pages",
-    "build": "cross-env NODE_ENV=production remix build",
+    "build": "cross-env NODE_ENV=production run-p build:*",
     "build:remix": "remix build",
     "build:css": "node-sass ./styles/ -o ./app/styles/ --output-style compressed",
     "dev": "cross-env NODE_ENV=development run-p dev:*",
