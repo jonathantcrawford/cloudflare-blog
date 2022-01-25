@@ -24,13 +24,13 @@ export default function Index() {
 
   return (
     <>
-      <animated.div className="layout__content" style={fade}>
+      <animated.div className="grid-area-content w-100p" style={fade}>
           about
         <Link to="/blog">blogs</Link>
       </animated.div>
       
 
-    <animated.div  className="layout__footer" style={bounce}>
+    <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
       Footer
     </animated.div>
     </>

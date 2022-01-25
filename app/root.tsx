@@ -4,11 +4,24 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  LinksFunction
 } from "remix";
 import { useSpring, animated } from "react-spring";
 
 import type { MetaFunction } from "remix";
+
+import { Header } from '~/components/Header/Header';
+
+import globalStylesUrl from "~/styles/global.css";
+import rootStylesUrl from "~/styles/pages/root.css";
+
+export const links: LinksFunction = () => {
+  return [
+    { rel: "stylesheet", href: globalStylesUrl },
+    { rel: "stylesheet", href: rootStylesUrl }
+  ];
+};
 
 
 
@@ -35,7 +48,7 @@ export default function App() {
   })
 
   return (
-    <html lang="en">
+    <html lang="en" className="bg-color-1">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -43,9 +56,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="layout">
-          <animated.div  className="layout__header" style={fade}>
-            HEADER
+        <div className="grid grid-custom-root mn-h-100vh mx-w-100vw">
+          <animated.div  className="grid-area-header" style={fade}>
+            <Header/>
           </animated.div>
 
           <Outlet/>

@@ -1,0 +1,1 @@
+.grid-custom-root{grid-template-columns:5vw 90vw 5vw;grid-template-rows:5vh min-content 5vh auto 5vh min-content;grid-template-areas:". . ." ". ga-header ." ". . ." ". ga-content ." ". . ." "ga-footer ga-footer ga-footer"}.grid-area-header{grid-area:ga-header}.grid-area-content{grid-area:ga-content}.grid-area-footer{grid-area:ga-footer}
