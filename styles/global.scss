@@ -16,7 +16,40 @@ body {
     font-weight: 500;
     font-style: normal;
     font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hamlin';
+    src: url('/static/fonts/Hamlin/Hamlin-ExtraBold.woff2') format('woff2'),
+        url('/static/fonts/Hamlin/Hamlin-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
   }
+  
+  @font-face {
+    font-family: 'Hamlin';
+    src: url('/static/fonts/Hamlin/Hamlin-Light.woff2') format('woff2'),
+        url('/static/fonts/Hamlin/Hamlin-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Hamlin';
+    src: url('/static/fonts/Hamlin/Hamlin-Regular.woff2') format('woff2'),
+        url('/static/fonts/Hamlin/Hamlin-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Hamlin';
+    src: url('/static/fonts/Hamlin/Hamlin-Bold.woff2') format('woff2'),
+        url('/static/fonts/Hamlin/Hamlin-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
 
 
 // theme setup
@@ -25,13 +58,17 @@ body {
     --color-cta-primary: #feed01;
     --color-cta-primary-hover: #b1a500;
 
+    --color-text-primary: #ffffff;
+
     // bg-colors
     --bg-color-1: #000000;
 
     // fonts
-    --font-sans: "December";
+    --font-sans-1: "December";
+    --font-sans-2: "Hamlin";
 
     --font-size-1: 8vh;
+    --font-size-2: 2.5vh;
 
 }
 
@@ -45,16 +82,33 @@ body {
     color: var(--color-cta-primary-hover);
 }
 
+.color-text-primary {
+    color: var(--color-text-primary);
+}
+
 .bg-color-1 {
     background-color: var(--bg-color-1);
 }
 
-.font-sans {
-    font-family: var(--font-sans);
+.font-sans-1 {
+    font-family: var(--font-sans-1);
+}
+
+.font-sans-2 {
+    font-family: var(--font-sans-2);
+}
+
+
+.font-w-600 {
+    font-weight: 66;
 }
 
 .font-size-1 {
     font-size: var(--font-size-1);
+}
+
+.font-size-2 {
+    font-size: var(--font-size-2);
 }
 
 .text-dec-none {
@@ -80,6 +134,22 @@ body {
     max-width: 100vw;
 }
 
+.mx-w-200mm {
+    max-width: 200mm;
+}
+
+.m-t-1em {
+    margin-top: 1em;
+}
+
+.m-b-1em {
+    margin-bottom: 1em;
+}
+
+.l-h-fibem {
+    line-height: 1.618em;
+}
+
 
 .grid {
     display: grid;
@@ -88,6 +158,3 @@ body {
 .grid-ps-center {
     place-self: center;
 }
-
-
-  

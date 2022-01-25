@@ -4,6 +4,8 @@ import {
 
 import { useSpring, animated } from "react-spring";
 
+import { About } from '~/components/About/About';
+
 export default function Index() {
   const fade = useSpring({ 
     to: { opacity: 1 }, 
@@ -25,8 +27,7 @@ export default function Index() {
   return (
     <>
       <animated.div className="grid-area-content w-100p" style={fade}>
-          about
-        <Link to="/blog">blogs</Link>
+        <About/>
       </animated.div>
       
 
