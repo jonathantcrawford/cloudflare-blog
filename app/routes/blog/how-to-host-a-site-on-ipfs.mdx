@@ -1,8 +1,33 @@
 ---
 meta:
-  title: How to host a site on ipfs
-  description: Isn't this just awesome?
+  emoji: '💻'
+  title: 'How to host a site on IPFS'
+  subtitle: 'An overview on how to use Fleek.co to host a static site on IPFS.'
+  link: 'how-to-host-a-site-on-ipfs'
+  author: 'Jon Crawford'
+  date: '01/14/2022'
 ---
+
+
+
+import { PostHeader } from "~/components/PostHeader/PostHeader";
+import { CodeSnippet } from "~/components/CodeSnippet/CodeSnippet";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+
+
+
+
+<PostHeader info={{
+   emoji: '💻',
+   title: 'How to host a site on IPFS',
+   subtitle: 'An overview on how to use Fleek.co to host a static site on IPFS.',
+   link: 'how-to-host-a-site-on-ipfs',
+   author: 'Jon Crawford',
+   date: '01/14/2022'
+}} />
 
 # The web has gone interplanetary.
 Not really, but the web is evolving rapidly towards decentralization.
@@ -11,6 +36,13 @@ The reality is, that decentralization is an alternative network architecture wit
 
 Using IPFS for static site or single page applications hosting has some neat benefits.
 
+## What are the differences between HTTP and IPFS?
+
+HTTP can be thought of as a way for computers to directly communicate with one another. When an HTTP request is made, the device is sending some data to a specific location.
+When you open an empty tab in your browser and navigate to the url `https://google.com` your network request connects with a DNS to lookup the IP address associated with the domain you are requesting.
+If the domain is registered, the request is routed accordingly and the server at `google.com` sends a response (HTML) back to your computer.
+
+IPFS can be thought of as a giant file system, where each file or directory has a unique identifier called a hash. So when you make a request via IPFS you are looking for a specific file or directory, but you don't care where it comes from.
 
 > ## Terminology for reference
 > 
@@ -21,14 +53,6 @@ Using IPFS for static site or single page applications hosting has some neat ben
 > **[DNS](https://developer.mozilla.org/en-US/docs/Glossary/DNS)** a system which maps human friendly names to IP addresses.
 > 
 > **[CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN)** a group of servers spread out in different locations.
-
-## What are the differences between HTTP and IPFS?
-
-HTTP can be thought of as a way for computers to directly communicate with one another. When an HTTP request is made, the device is sending some data to a specific location.
-When you open an empty tab in your browser and navigate to the url `https://google.com` your network request connects with a DNS to lookup the IP address associated with the domain you are requesting.
-If the domain is registered, the request is routed accordingly and the server at `google.com` sends a response (HTML) back to your computer.
-
-IPFS can be thought of as a giant file system, where each file or directory has a unique identifier called a hash. So when you make a request via IPFS you are looking for a specific file or directory, but you don't care where it comes from.
 
 ## What are the benefits of hosting a static site using IPFS?
 
@@ -56,24 +80,37 @@ Some call IPFS the _permanent web_ because deleting every copy of the file from 
 
 ### Steps
 
-1. Create a new repo or clone this one. <a href="https://github.com/jonathantcrawford/blog/tree/fleek" target="_blank">github</a>
+1. Create a new repo or clone this one. <a href="https://github.com/jonathantcrawford/blog/tree/fleek" target="_blank"><FontAwesomeIcon icon={faGithub}/></a>
 2. Setup a Fleek Account at [Fleek.co](https://fleek.co/)
 3. Select "Hosting" from the side bar and click "Add New Site"
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_1.png"/>
 4. Connect with Github.
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_2.png"/>
 5. Select a repo.
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_3.png"/>
 6. Select "IPFS" from the Hosting Service dropdown.
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_4.png"/>
 7. Choose the branch you want to deploy when commits are pushed.
    If you are using one of the frameworks listed, feel free to select it. Otherwise, select "Other" for now. Then click "Deploy Site".
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_5.png"/>
 8. You now have a configured Fleek Project! You can now view an overview of your project as well as a list of deployments and other settings.
-
+   <img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_6.png"/>
 9. If you selected "Other" as your framework, during the project setup, your build most likely failed. It's because we still need to setup the build actions for the repo.
    To fix this all we have to do is add a new file `.fleek.json` to the root of the repo.
-
+   <CodeSnippet
+      fileName={'.fleek.json'}
+     string={`{
+    "build": {
+        "image": "node:16",
+        "command": "yarn && yarn build && echo $SOME_ENV",
+        "publicDir": "dist",
+        "baseDir": ".",
+        "environment": {
+            "SOME_ENV": "Build finished!"
+        }
+    }
+}`}
+   />
    This file lets you specify a docker image, a build command, a build directory
    and base directory. You can also pass in environment variables to build command.
    (If you have environment variables that are secret, then you can configure the
@@ -93,6 +130,7 @@ Once you place a bid and win an auction you can now point your domain to your IP
 
 Fleek makes this really easy. Just go to the "Domain Management" section of your Fleek project and scroll to the "HNS" section.
 
+<img src="/static/images/how-to-host-a-site-on-ipfs/screenshot_7.png"/>
 Click "Add HNS" and then follow the instructions. [Fleek Domain Management Support](https://docs.fleek.co/domain-management/hns-domains/)
 
 ## HNS Domain Limitations

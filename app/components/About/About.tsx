@@ -6,7 +6,7 @@ export const About = () => {
   const aboutClasses = [
     "m-t-1em",
     "font-sans-2",
-    "font-size-3",
+    "font-size-4",
     "color-text-primary"
   ].join(' ');
 
@@ -18,7 +18,7 @@ export const About = () => {
 
   const navLinkClasses = [
     "font-sans-2",
-    "font-size-3",
+    "font-size-4",
     "text-dec-none",
     "color-cta-primary",
     "color-cta-primary-hover",

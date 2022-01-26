@@ -1,0 +1,21 @@
+.code-snippet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+
+.code-snippet code.file-name {
+    border-radius: 0.4vh 0.4vh 0vh 0vh;
+    background-color: var(--color-8);
+    color: var(--color-1);
+    padding: 0.6vh 0.6vh;
+}
+
+.code-snippet pre {
+
+    margin-top: 0em;
+    
+
+    border-radius: 0vh 0vh 0.4vh 0.4vh;
+}

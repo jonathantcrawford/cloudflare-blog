@@ -1,8 +1,20 @@
 import {
-    Link, Outlet
+    Link, Outlet, LinksFunction
   } from "remix";
   
   import { useSpring, animated } from "react-spring";
+
+  import styles from "~/styles/markdown.css";
+
+  import { links as codeSnippetLinks } from "~/components/CodeSnippet/CodeSnippet";
+  
+
+  export const links: LinksFunction = () => {
+      return [
+        ...codeSnippetLinks(),
+        { rel: "stylesheet",  href: styles},    
+      ];
+    };
 
   
   export default function Blog() {
@@ -15,7 +27,7 @@ import {
       });
   
     return (
-        <animated.div className="grid-area-content w-100p" style={fade}>
+        <animated.div className="grid-area-content w-100p markdown" style={fade}>
             <Outlet/>
         </animated.div>
     );

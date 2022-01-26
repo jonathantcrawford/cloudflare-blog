@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "remix";
+import { LinksFunction } from "remix";
 
 import { PostLinks } from "~/components/PostLinks/PostLinks";
 

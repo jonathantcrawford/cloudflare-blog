@@ -19,7 +19,7 @@ import rootStylesUrl from "~/styles/pages/root.css";
 
 import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
 import decemberFontStylesUrl from "~/styles/fonts/december.css";
-import esteroFontStylesUrl from "~/styles/fonts/estero.css";
+import saygonFontStylesUrl from "~/styles/fonts/saygon.css";
 
 
 export const links: LinksFunction = () => {
@@ -27,7 +27,7 @@ export const links: LinksFunction = () => {
     {rel: "icon", href: "/static/images/favicon.png" },
     { rel: "stylesheet",  href: hamlinFontStylesUrl },
     { rel: "stylesheet",  href: decemberFontStylesUrl },
-    { rel: "stylesheet", href: esteroFontStylesUrl },
+    { rel: "stylesheet",  href: saygonFontStylesUrl },
     { rel: "stylesheet",  href: globalStylesUrl },
     { rel: "stylesheet", href: rootStylesUrl },
     

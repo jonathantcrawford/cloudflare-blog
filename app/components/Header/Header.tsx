@@ -28,10 +28,10 @@ export const Header = () => {
             ? [...navLinkClasses, ...activeClasses].join(' ') 
             : [...navLinkClasses, ...notActiveClasses].join(' ') } 
               >
-        <span className="m-r-02em">Jon</span>
-        <span>Crawford</span>
+        <span className="m-r-0_2em">Jon</span>
+        <span >Crawford</span>
       </NavLink>
-      <div className="m-t-1em font-sans-2 font-size-3 color-text-primary">
+      <div className="m-t-0_5rem font-sans-2 font-size-7 color-text-primary">
         <b>Software Engineer</b> <b>@</b> <a className="text-dec-none color-cta-primary color-cta-primary-hover" rel="noreferrer" href="https://lunchbox.io/" target="_blank"><b>Lunchbox</b></a>
       </div>
     </div>
