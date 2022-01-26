@@ -1,17 +1,4 @@
 
-
-body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Open Sans';
-}
-
-*::-webkit-scrollbar {
-    width: 0px;
-}
-
-
 // theme setup
 :root {
     // colors
@@ -59,6 +46,23 @@ body {
     --font-size-5: 1.44rem;
     --font-size-6: 1.2rem;
     --font-size-7: 1rem;
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans';
+}
+
+*::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+*::selection {
+    background-color: var(--color-cta-primary);
+    color: var(--color-0);
 }
 
 

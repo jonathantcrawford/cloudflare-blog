@@ -44,16 +44,6 @@ If the domain is registered, the request is routed accordingly and the server at
 
 IPFS can be thought of as a giant file system, where each file or directory has a unique identifier called a hash. So when you make a request via IPFS you are looking for a specific file or directory, but you don't care where it comes from.
 
-> ## Terminology for reference
-> 
-> **[HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)** is an open source protocol for computers to communicate over a network.
-> 
-> **[IPFS](https://ipfs.io/)** is an open source protocol for storing and sharing data on a peer-to-peer network.
-> 
-> **[DNS](https://developer.mozilla.org/en-US/docs/Glossary/DNS)** a system which maps human friendly names to IP addresses.
-> 
-> **[CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN)** a group of servers spread out in different locations.
-
 ## What are the benefits of hosting a static site using IPFS?
 
 ### 💰 Cost
@@ -71,6 +61,16 @@ With less traffic coming to your server, your server costs are reduced.
 Files on IPFS are organically replicated. If someone tries to block traffic to your site or forces you to turn your server off, the file is still out there indefinitely on the system.
 Some call IPFS the _permanent web_ because deleting every copy of the file from every node is near to impossible.
 
+> ## Extra References
+> 
+> **[HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)** is an open source protocol for computers to communicate over a network.
+> 
+> **[IPFS](https://ipfs.io/)** is an open source protocol for storing and sharing data on a peer-to-peer network.
+> 
+> **[DNS](https://developer.mozilla.org/en-US/docs/Glossary/DNS)** a system which maps human friendly names to IP addresses.
+> 
+> **[CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN)** a group of servers spread out in different locations.
+
 ## Walkthrough Guide
 
 ### Recommended Tools
@@ -83,18 +83,18 @@ Some call IPFS the _permanent web_ because deleting every copy of the file from 
 1. Create a new repo or clone this one. <a alt="github repo" rel="noreferrer" href="https://github.com/jonathantcrawford/blog/tree/fleek" target="_blank"><FontAwesomeIcon icon={faGithub}/></a>
 2. Setup a Fleek Account at [Fleek.co](https://fleek.co/)
 3. Select "Hosting" from the side bar and click "Add New Site"
-   <img alt="screenshot_1" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_1.png"/>
+   <img alt="screenshot_1" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_1.webp"/>
 4. Connect with Github.
-   <img alt="screenshot_2" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_2.png"/>
+   <img alt="screenshot_2" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_2.webp"/>
 5. Select a repo.
-   <img alt="screenshot_3" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_3.png"/>
+   <img alt="screenshot_3" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_3.webp"/>
 6. Select "IPFS" from the Hosting Service dropdown.
-   <img alt="screenshot_4" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_4.png"/>
+   <img alt="screenshot_4" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_4.webp"/>
 7. Choose the branch you want to deploy when commits are pushed.
    If you are using one of the frameworks listed, feel free to select it. Otherwise, select "Other" for now. Then click "Deploy Site".
-   <img alt="screenshot_5" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_5.png"/>
+   <img alt="screenshot_5" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_5.webp"/>
 8. You now have a configured Fleek Project! You can now view an overview of your project as well as a list of deployments and other settings.
-   <img alt="screenshot_6" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_6.png"/>
+   <img alt="screenshot_6" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_6.webp"/>
 9. If you selected "Other" as your framework, during the project setup, your build most likely failed. It's because we still need to setup the build actions for the repo.
    To fix this all we have to do is add a new file `.fleek.json` to the root of the repo.
    <CodeSnippet
@@ -130,7 +130,7 @@ Once you place a bid and win an auction you can now point your domain to your IP
 
 Fleek makes this really easy. Just go to the "Domain Management" section of your Fleek project and scroll to the "HNS" section.
 
-<img alt="screenshot_7" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_7.png"/>
+<img alt="screenshot_7" src="/static/images/how-to-host-a-site-on-ipfs/screenshot_7.webp"/>
 Click "Add HNS" and then follow the instructions. [Fleek Domain Management Support](https://docs.fleek.co/domain-management/hns-domains/)
 
 ## HNS Domain Limitations

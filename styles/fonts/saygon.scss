@@ -45,6 +45,15 @@
 
 @font-face {
     font-family: "Saygon";
+    src: url("/static/fonts/Saygon/Saygon-SemiboldItalic.woff2") format("woff2"),
+        url("/static/fonts/Saygon/Saygon-SemiboldItalic.woff") format("woff");
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Saygon";
     src: url("/static/fonts/Saygon/Saygon-Bold.woff2") format("woff2"),
         url("/static/fonts/Saygon/Saygon-Bold.woff") format("woff");
     font-weight: 700;
@@ -58,5 +67,14 @@
         url("/static/fonts/Saygon/Saygon-Extrabold.woff") format("woff");
     font-weight: 800;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Saygon";
+    src: url("/static/fonts/Saygon/Saygon-ExtraboldItalic.woff2") format("woff2"),
+        url("/static/fonts/Saygon/Saygon-ExtraboldItalic.woff") format("woff");
+    font-weight: 800;
+    font-style: italic;
     font-display: swap;
 }
