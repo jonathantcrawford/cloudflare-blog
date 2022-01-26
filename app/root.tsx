@@ -27,7 +27,6 @@ export const links: LinksFunction = () => {
     {rel: "icon", href: "/static/images/favicon.png" },
     { rel: "stylesheet",  href: hamlinFontStylesUrl },
     { rel: "stylesheet",  href: decemberFontStylesUrl },
-    { rel: "stylesheet",  href: saygonFontStylesUrl },
     { rel: "stylesheet",  href: globalStylesUrl },
     { rel: "stylesheet", href: rootStylesUrl },
     

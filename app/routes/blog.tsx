@@ -7,12 +7,14 @@ import {
   import styles from "~/styles/markdown.css";
 
   import { links as codeSnippetLinks } from "~/components/CodeSnippet/CodeSnippet";
+  import saygonFontStylesUrl from "~/styles/fonts/saygon.css";
   
 
   export const links: LinksFunction = () => {
       return [
         ...codeSnippetLinks(),
-        { rel: "stylesheet",  href: styles},    
+        { rel: "stylesheet",  href: styles},
+        { rel: "stylesheet",  href: saygonFontStylesUrl },
       ];
     };
 
