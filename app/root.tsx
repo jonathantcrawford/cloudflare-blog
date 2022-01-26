@@ -12,12 +12,14 @@ import { useSpring, animated } from "react-spring";
 import type { MetaFunction } from "remix";
 
 import { Header } from '~/components/Header/Header';
+import { Footer } from '~/components/Footer/Footer';
 
 import globalStylesUrl from "~/styles/global.css";
 import rootStylesUrl from "~/styles/pages/root.css";
 
 import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
 import decemberFontStylesUrl from "~/styles/fonts/december.css";
+import esteroFontStylesUrl from "~/styles/fonts/estero.css";
 
 
 export const links: LinksFunction = () => {
@@ -25,8 +27,10 @@ export const links: LinksFunction = () => {
     {rel: "icon", href: "/static/images/favicon.png" },
     { rel: "stylesheet",  href: hamlinFontStylesUrl },
     { rel: "stylesheet",  href: decemberFontStylesUrl },
+    { rel: "stylesheet", href: esteroFontStylesUrl },
     { rel: "stylesheet",  href: globalStylesUrl },
-    { rel: "stylesheet", href: rootStylesUrl }
+    { rel: "stylesheet", href: rootStylesUrl },
+    
   ];
 };
 
@@ -65,6 +69,15 @@ export default function App() {
     }
   });
 
+  const bounce = useSpring({ 
+    to: { y: "0%" }, 
+    from: { y: "100%" },
+    config: {
+      frequency: 0.4,
+      damping: 0.3
+    }
+  });
+
 
   return (
     <html lang="en" className="bg-color-primary">
@@ -81,6 +94,9 @@ export default function App() {
           </animated.div>
 
           <Outlet/>
+          <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
+           <Footer/>
+          </animated.div>
         </div>
         <ScrollRestoration />
         <Scripts />

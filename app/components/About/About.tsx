@@ -1,3 +1,5 @@
+import { NavLink } from "remix";
+
 
 export const About = () => {
 
@@ -14,13 +16,19 @@ export const About = () => {
     "l-h-fibem"
   ].join(' ');
 
+  const navLinkClasses = [
+    "font-sans-2",
+    "font-size-3",
+    "text-dec-none",
+    "color-cta-primary",
+    "color-cta-primary-hover",
+  ].join(' ');
+
+
   return (
     <div className={aboutClasses}>
-      <div className={divClasses}>
-        I work at Lunchbox Inc. as a Software Engineer on the Innovation Team.
-      </div>
       <div className={divClasses}>I am interested in design systems, web3 and user experiences.</div>
-      <div className={divClasses}>I am currently living in Austin, TX.</div>
+      <div className={divClasses}>Feel free to check out my <NavLink to="/blog" className={navLinkClasses}>blog</NavLink>.</div>
     </div>
   );
 };

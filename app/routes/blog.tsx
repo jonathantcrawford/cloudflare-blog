@@ -4,7 +4,6 @@ import {
   
   import { useSpring, animated } from "react-spring";
 
-  import { Footer } from '~/components/Footer/Footer';
   
   export default function Blog() {
     const fade = useSpring({ 
@@ -14,26 +13,10 @@ import {
           duration: 600
         }
       });
-    
-      const bounce = useSpring({ 
-        to: { y: "0%" }, 
-        from: { y: "100%" },
-        config: {
-          frequency: 0.4,
-          damping: 0.3
-        }
-      });
   
     return (
-        <>
-        <animated.div className="layout__content" style={fade}>
+        <animated.div className="grid-area-content w-100p" style={fade}>
             <Outlet/>
         </animated.div>
-        
-  
-      <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
-        <Footer/>
-      </animated.div>
-      </>
     );
   }
