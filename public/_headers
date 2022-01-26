@@ -1,0 +1,7 @@
+/blog/*
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: nosnippet
+
+/static/*
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: nosnippet

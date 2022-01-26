@@ -28,7 +28,7 @@ export const About = () => {
   return (
     <div className={aboutClasses}>
       <div className={divClasses}>I am interested in design systems, web3 and user experiences.</div>
-      <div className={divClasses}>Feel free to check out my <NavLink to="/blog" className={navLinkClasses}>blog</NavLink>.</div>
+      <div className={divClasses}>Feel free to check out my <NavLink rel="prefetch" to="/blog" className={navLinkClasses}>blog</NavLink>.</div>
     </div>
   );
 };
