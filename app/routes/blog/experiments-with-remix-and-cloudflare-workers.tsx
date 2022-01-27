@@ -7,19 +7,12 @@ import { json, Form, useLoaderData, Outlet, useCatch } from "remix";
 
 import { unencryptedSession } from "../../sessions.server";
 
-let SESSION_NFT_URL = "NFT_URL";
 
 let SESSION_TOKEN_ID = "SESSION_TOKEN_ID";
 
 let SESSION_CONTRACT_ADDR = "SESSION_CONTRACT_ADDR";
 
-function convertFromHex(hex:any) {
-  var hex = hex.toString();//force conversion
-  var str = '';
-  for (var i = 0; i < hex.length; i += 2)
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-  return str;
-}
+
 
 
 export let meta: MetaFunction = () => {
@@ -60,15 +53,16 @@ export let loader: LoaderFunction = async ({ request }) => {
   let tokenId = session.get(SESSION_TOKEN_ID);
   let contract = session.get(SESSION_CONTRACT_ADDR);
 
+
   if (typeof contract !== "string" && typeof tokenId !== "string") {
     const random = Math.random() > 0.5 
       ? { 
-        tokenId: "0x0e89341c0000000000000000000000000000000000000000000000000000000000000004",
-        contract: "0xd5dfb159788856f9fd5f897509d5a68b7b571ea8"
+        tokenId: "9264",
+        contract: "0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF"
       } 
       : {
-        tokenId: "0x0e89341c0000000000000000000000000000000000000000000000000000000000000009",
-        contract: "0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8"
+        tokenId: "2558",
+        contract: "0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF"
       };
 
       tokenId = random.tokenId;
@@ -79,59 +73,39 @@ export let loader: LoaderFunction = async ({ request }) => {
   session.set(SESSION_TOKEN_ID, tokenId);
   session.set(SESSION_CONTRACT_ADDR, contract);
 
-    // 0xd5dfb159788856f9fd5f897509d5a68b7b571ea8 - Tacoshi
-    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000004
-
-    // 0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8 - Quesadileon Musck
-    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000009
-    var payload: any = {
-      id: 1,
-      jsonrpc: "2.0",
-      method: "eth_call",
-      params: [
-          {
-              data: tokenId,
-              to: contract
-          }
-          , 
-          "latest"]
-  }
 
 
-  const req = new Request(`https://mainnet.infura.io/v3/a593f3212732402f9033295ce9f3094b`, {
-      body: JSON.stringify(payload),
+  const req = new Request(`https://api.nftport.xyz/v0/nfts/${contract}/${tokenId}?chain=ethereum&refresh_metadata=true`, {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `9495f37b-a152-415b-a32c-32660779ba1b`
       },
-      method: 'POST'
+      method: 'GET'
     })
 
   const res = await fetch(req);
   const data: any = await res.json();
-  const url: any  = convertFromHex(data.result).match(/https.*/g)?.toString();
+  const { nft: { metadata }} = data;
 
-  const gatewayReq = new Request(url, {
-    method: 'GET',
+
+  return json({metadata, contract}, {
     headers: {
-      'Content-Type': 'application/json'
+      "Set-Cookie": await unencryptedSession.commitSession(session),
     },
   });
-  const metaReq = await fetch(gatewayReq);
-  const metaData = await metaReq.json();
 
 
-  return json(JSON.stringify(metaData), {status: 200});
 };
-
 export default function Index() {
-  const string = useLoaderData();
+  const {metadata, contract} = useLoaderData();
 
   useEffect(() => {
-    console.log(string);
-  },[])
-  
+    console.log({metadata, contract})
+  }, [])
+
+
   return (
-    <Outlet context={string}/>
+    <Outlet context={{metadata, contract}}/>
   );
 }
 
@@ -158,13 +132,12 @@ export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
 
   return (
-    <div className="color-error font-sans-3 grid-area-content w-100p">
+    <blockquote className="font-sans-3 grid-area-content w-100p">
       <h1 className="">App Error</h1>
-      <pre className="white-space-normal">{error.message}</pre>
+      <code className="white-space-normal">{error.message}</code>
       <p>
-        Replace this UI with what you want users to see when your app throws
-        uncaught errors.
+        The NFTPort API rate limit has been temporarily exceeded.
       </p>
-    </div>
+    </blockquote>
   );
 }

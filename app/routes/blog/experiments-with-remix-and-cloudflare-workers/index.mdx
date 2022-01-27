@@ -11,7 +11,7 @@ meta:
 import { PostHeader } from "~/components/PostHeader/PostHeader";
 import { CodeSnippet } from "~/components/CodeSnippet/CodeSnippet";
 
-
+import { CookiesDemo } from "~/components/CookiesDemo/CookiesDemo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -33,11 +33,11 @@ The first time you fetched this page, you started a new session and 1 of 2 possi
 **I didn't ask for your consent to accept cookies, but I'm not storing them. Here are the values.**
 
 These are hexidecimal values used to lookup contracts on Ethereum.
-> 1. `contract=0xd5dfb159788856f9fd5f897509d5a68b7b571ea8&tokenId=0x0e89341c0000000000000000000000000000000000000000000000000000000000000004`
-> 2. `contract=0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8&tokenId=0x0e89341c0000000000000000000000000000000000000000000000000000000000000009`
+> 1. `contract=0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF8&tokenId=9264`
+> 2. `contract=0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF&tokenId=2558`
 
-The value pair was then used to send a request to a dedicated Ethereum gateway, Infura. 
-Once the request to Infura was complete, the Cloudflare Worker injected the contract meta data response into the markup and sent it back to you along with the cookie value.
+The value pair was then used to send a request to a dedicated Ethereum gateway API, (NFTPort). 
+Once the request to NFTPORT was complete, the Cloudflare Worker injected the contract meta data response into the markup and sent it back to you along with the cookie value.
 *I could have passed the values to you and made you use your client side Ethereum provider, but browser wallets are a UX nightmare.*
 
  Check out which NFT was randomly chosen to be displayed!
@@ -46,4 +46,5 @@ Once the request to Infura was complete, the Cloudflare Worker injected the cont
 
 
 
-
+<CookiesDemo/>
+*This page is far from optimized and is not an accurate performance representation of the Remix framework.*
