@@ -78,38 +78,103 @@ export let loader: LoaderFunction = async ({ request }) => {
   session.set(SESSION_TOKEN_ID, tokenId);
   session.set(SESSION_CONTRACT_ADDR, contract);
 
-    // 0xd5dfb159788856f9fd5f897509d5a68b7b571ea8 - Tacoshi
-    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000004
+  //   // 0xd5dfb159788856f9fd5f897509d5a68b7b571ea8 - Tacoshi
+  //   // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000004
 
-    // 0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8 - Quesadileon Musck
-    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000009
-    var payload: any = {
-      id: 1,
-      jsonrpc: "2.0",
-      method: "eth_call",
-      params: [
-          {
-              data: tokenId,
-              to: contract
-          }
-          , 
-          "latest"]
-  }
+  //   // 0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8 - Quesadileon Musck
+  //   // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000009
+  //   var payload: any = {
+  //     id: 1,
+  //     jsonrpc: "2.0",
+  //     method: "eth_call",
+  //     params: [
+  //         {
+  //             data: tokenId,
+  //             to: contract
+  //         }
+  //         , 
+  //         "latest"]
+  // }
 
 
-  const req = new Request(`https://mainnet.infura.io/v3/a593f3212732402f9033295ce9f3094b`, {
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
+  // const req = new Request(`https://mainnet.infura.io/v3/a593f3212732402f9033295ce9f3094b`, {
+  //     body: JSON.stringify(payload),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     method: 'POST'
+  //   })
+
+  // const res = await fetch(req);
+  // const data: any = await res.json();
+  // const url: any = convertFromHex(data.result).match(/https.*/g)?.toString();
+  // const metaReq = await fetch(url);
+  // const metaData: any = await metaReq.json();
+
+  const metaData = {
+    "name": "Rare Tacoshi Nakamoto",
+    "description": "They say he invented Bitcoin, but don’t believe that. The only crypto Tacoshi claims credit for is TACO!",
+    "image": "https://gateway.ipfs.io/ipfs/QmdBxaCNLHXbSouVN2z2xK9Rq9sM4Wmr99GJoQU6dCEv2Y",
+    "animation_url": "",
+    "audio_url": "",
+    "interactive_url": "",
+    "external_link": "https://opensea.io/collection/tacoshis-quest",
+    "attributes": [
+      {
+        "trait_type": "Pronouns",
+        "value": "He/Him"
       },
-      method: 'POST'
-    })
-
-  const res = await fetch(req);
-  const data: any = await res.json();
-  const url: any = convertFromHex(data.result).match(/https.*/g)?.toString();
-  const metaReq = await fetch(url);
-  const metaData: any = await metaReq.json();
+      {
+        "trait_type": "Rarity",
+        "value": "Rare"
+      },
+      {
+        "trait_type": "Taco Total",
+        "value": "48"
+      },
+      {
+        "trait_type": "Crunch",
+        "value": "4",
+        "display_type": "boost_number"
+      },
+      {
+        "trait_type": "Spice",
+        "value": "7",
+        "display_type": "boost_number"
+      },
+      {
+        "trait_type": "Cool",
+        "value": "15",
+        "display_type": "boost_number"
+      },
+      {
+        "trait_type": "Decay",
+        "value": "13",
+        "display_type": "boost_number"
+      },
+      {
+        "trait_type": "Versatility",
+        "value": "9",
+        "display_type": "boost_number"
+      },
+      {
+        "trait_type": "Max Supply",
+        "value": "10"
+      },
+      {
+        "trait_type": "Set",
+        "value": "Tacoshi's Quest"
+      },
+      {
+        "trait_type": "Farm",
+        "value": "Tacoshi's Rabbit Hole"
+      },
+      {
+        "trait_type": "Artist",
+        "value": "Blanka Boskov"
+      }
+    ]
+  }
 
   return json(
     { metaData, contract },
