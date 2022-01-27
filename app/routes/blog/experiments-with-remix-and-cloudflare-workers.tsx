@@ -1,11 +1,11 @@
 
    
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ActionFunction, LoaderFunction, MetaFunction } from "remix";
 import { json, Form, useLoaderData, Outlet, useCatch } from "remix";
 
 
-import { unencryptedSession } from "~/sessions.server";
+import { unencryptedSession } from "../../sessions.server";
 
 let SESSION_NFT_URL = "NFT_URL";
 
@@ -115,19 +115,18 @@ export let loader: LoaderFunction = async ({ request }) => {
   const metaData: any = await metaReq.json();
 
 
-
-
-
   return {metaData, contract};
 };
 
 export default function Index() {
-  const {metaData, contract} = useLoaderData();
+  const { metaData, contract} = useLoaderData();
 
-
+  useEffect(() => {
+    console.log(metaData);
+  }, []);
 
   return (
-    <Outlet context={{metaData, contract}}/>
+    <code>test</code>
   );
 }
 
