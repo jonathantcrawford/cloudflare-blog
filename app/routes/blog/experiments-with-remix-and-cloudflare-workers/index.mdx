@@ -11,7 +11,7 @@ meta:
 import { PostHeader } from "~/components/PostHeader/PostHeader";
 import { CodeSnippet } from "~/components/CodeSnippet/CodeSnippet";
 
-import { ABCookieDemo } from "~/components/ABCookieDemo/ABCookieDemo";
+import { CookiesDemo } from "~/components/CookiesDemo/CookiesDemo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -28,55 +28,23 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 
 
+# All about those cookies.
+The first time you fetched this page, you started a new session and 1 of 2 possible cookie value pairs were randomly chosen wihtin a Cloudflare Worker.
+**I didn't ask for your consent to accept cookies, but I'm not storing them. Here are the values.**
 
-# Remix is on the edge of glory.
--
-- Scroll Restoration
-- Nested Routes
-- prefetch page links
-- Server side functions
-  - cookies
-  - session state
-  - request locations
-- forms
-- meta tag generation
-- MDX notion
-- Using Live data widgets
-- random art generator
-- nft art widget
-- error components
+These are hexidecimal values used to lookup contracts on Ethereum.
+> 1. `contract=0xd5dfb159788856f9fd5f897509d5a68b7b571ea8&tokenId=0x0e89341c0000000000000000000000000000000000000000000000000000000000000004`
+> 2. `contract=0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8&tokenId=0x0e89341c0000000000000000000000000000000000000000000000000000000000000009`
 
+The value pair was then used to send a request to a dedicated Ethereum gateway, Infura. 
+Once the request to Infura was complete, the Cloudflare Worker injected the contract meta data response into the markup and sent it back to you along with the cookie value.
+*I could have passed the values to you and made you use your client side Ethereum provider, but browser wallets are a UX nightmare.*
 
-> <ABCookieDemo/>
+ Check out which NFT was randomly chosen to be displayed!
+> 1. When you refresh the page, the same NFT will be displayed.
+> 2. When you click on the other option, you send a form request back to the server that sets your cookie and returns the appropriate metadata.
+
+> <CookiesDemo/>
 
 
 
-Some Ideas
-- add a comments components
-- authentication
-- editing in the browser
-- protected draft pages
-
-
-
-Improvements
-- Web3 Authentication
-- Open Source contracts
-- commits and closed pull closed requests
-- 
-
-Incentive Systems
-- Reward contributors with tokens
-- Acquire tokens for voting power
-- 
-
-
-> ## Extra References
-> 
-> **[SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)** single page application
-> 
-> **[SSR](https://developer.mozilla.org/en-US/docs/Learn/Server-side)** server side rendering
-> 
-> **[SSG](https://developer.mozilla.org/en-US/docs/Glossary/DNS)** static site generation
-> 
-> **[ESSR](https://developer.mozilla.org/en-US/docs/Glossary/CDN)** edge server side rendering

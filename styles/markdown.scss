@@ -73,8 +73,9 @@
     code {
         padding: 0.3vh 0.6vh;
         border-radius: 0.4vh;
-        background-color: var(--color-2);
+        background-color: var(--color-6);
         color: var(--color-0);
+        overflow-wrap: break-word;
       }
       
       pre {
