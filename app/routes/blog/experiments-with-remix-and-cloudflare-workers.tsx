@@ -105,7 +105,7 @@ export let loader: LoaderFunction = async ({ request }) => {
       method: 'POST'
     })
 
-  // const res = await fetch(req);
+  const res = await fetch(req);
   // const data: any = await res.json();
   // const url: any = convertFromHex(data.result).match(/https.*/g)?.toString();
   // const metaReq = await fetch(url);
