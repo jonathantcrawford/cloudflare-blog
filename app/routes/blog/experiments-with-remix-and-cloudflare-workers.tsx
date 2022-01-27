@@ -119,11 +119,6 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Index() {
-  const { metaData, contract} = useLoaderData();
-
-  useEffect(() => {
-    console.log(metaData);
-  }, []);
 
   return (
     <code>test</code>
