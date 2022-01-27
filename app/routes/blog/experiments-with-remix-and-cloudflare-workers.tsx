@@ -108,20 +108,26 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   const res = await fetch(req);
   const data: any = await res.json();
-  const url: any = convertFromHex(data.result).match(/https.*/g)?.toString();
+  const url: any  = convertFromHex(data.result).match(/https.*/g)?.toString();
 
-  const gatewayReq = new Request(url, {method: 'GET'});
+  const gatewayReq = new Request(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
   const metaReq = await fetch(gatewayReq);
-  const metaData: any = await metaReq.json();
+  const metaData = await metaReq.json();
 
 
-  return {metaData, contract};
+  return json(JSON.stringify(metaData), {status: 200});
 };
 
 export default function Index() {
-
+  const string = useLoaderData();
+  
   return (
-    <code>test</code>
+    <code>{string}</code>
   );
 }
 
