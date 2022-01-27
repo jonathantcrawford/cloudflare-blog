@@ -50,7 +50,7 @@
         }
     }
     
-    img {
+    img:not(.ignore-markdown) {
         margin-top: 1rem;
         width: 100%;
     }

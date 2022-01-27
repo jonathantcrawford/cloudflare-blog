@@ -4,15 +4,17 @@ import { Form, useOutletContext, useTransition } from "remix";
 
 import { AnimatePresence, motion } from "framer-motion";
 
+import { CodeSnippet  } from "~/components/CodeSnippet/CodeSnippet";
+
 
 export function ABCookieDemo() {
- const { bucket } = useOutletContext<any>();
+ const { metaData, contract } = useOutletContext<any>();
 
  const transition = useTransition();
 
  const {state} = transition;
 
- const isLoading = state === "submitting" || state === "loading";
+ const isLoading = state !== "idle" ;
 
 
 
@@ -37,70 +39,68 @@ export function ABCookieDemo() {
           Each use of a unique cookie receive explicit consent.
       </p>
 
-      <p><strong>Bucket: {bucket ? bucket : "none"}</strong></p>
+      
+        <div className="flex flex-wrap-reverse flex-direction-row align-items-center justify-content-center">
+        <div style={{maxWidth: "500px", width: "100%"}} className="flex-1 flex flex-direction-column align-items-center">
+            <Form className="w-100p" method="post" action="/blog/experiments-with-remix-and-cloudflare-workers" replace>
+            <input type="hidden" name="contract" value="0xd5dfb159788856f9fd5f897509d5a68b7b571ea8" />
+            <input type="hidden" name="tokenId" value="0x0e89341c0000000000000000000000000000000000000000000000000000000000000004" />
+            
+            <button
+                type="submit"
+                className="button w-100p m-b-1rem"
+            >
+                Tacoshi Nakamoto
+            </button>
+            </Form>
+            <Form className="w-100p" method="post" action="/blog/experiments-with-remix-and-cloudflare-workers" replace>
+            <input type="hidden" name="contract" value="0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8" />
+            <input type="hidden" name="tokenId" value="0x0e89341c0000000000000000000000000000000000000000000000000000000000000009" />
+            <button
+                type="submit"
+                className="button w-100p m-b-1rem"
+            >
+                Quesadelon Musk
+            </button>
+            </Form>
+            <div style={{maxHeight: "300px", maxWidth: "100%", overflowY: 'scroll'}}>
+            <CodeSnippet fileName={contract} string={JSON.stringify(metaData, null, 2)}/>
+            </div>
+        </div>
+        <div style={{flex: 1, display: 'flex', justifyContent: 'center',height: '504px', margin: '1rem'}}>
+        <AnimatePresence exitBeforeEnter>
+            {<motion.img
+                key={metaData?.image}
+                alt={`${metaData?.image} nft image`}
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={{
+                initial: {
+                    opacity: 0,
+                    scale: '1%'
+                },
+                in: {
+                    opacity: 1,
+                    scale: '100%',
+                },
+                out: {
+                    opacity: 0,
+                    scale: '1%'
+                },
+                }}
+                transition={{
+                type: "spring",
+                duration: 1,
+                }}
+                className="ignore-markdown" 
+                style={{width: "20rem"}} 
+                src={metaData?.image}
+            />}
+        </AnimatePresence>
+        </div>
+        </div>
 
-      <div>
-        <Form method="post" action="/blog/experiments-with-remix-and-cloudflare-workers" replace>
-          <input type="hidden" name="bucket" value="" />
-          <button type="submit" className={""}>
-            Remove Bucket
-          </button>
-        </Form>{" "}
-        <Form method="post" action="/blog/experiments-with-remix-and-cloudflare-workers" replace>
-          <input type="hidden" name="bucket" value="a" />
-          <button
-            type="submit"
-            className={""}
-          >
-            Bucket A
-          </button>
-        </Form>{" "}
-        <Form method="post" action="/blog/experiments-with-remix-and-cloudflare-workers" replace>
-          <input type="hidden" name="bucket" value="b" />
-          <button
-            type="submit"
-            className=""
-          >
-            Bucket B
-          </button>
-        </Form>
-      </div>
-
-    <AnimatePresence exitBeforeEnter>
-        <motion.img
-            key={isLoading.toString()}
-            alt={`${bucket || "default"} bucket image`}
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={{
-              initial: {
-                opacity: 0,
-              },
-              in: {
-                opacity: 1,
-              },
-              out: {
-                opacity: 0,
-              },
-            }}
-            transition={{
-              type: "tween",
-              duration: 0.8,
-            }}
-            src={(() => {
-            if (isLoading) return "/static/images/how-to-host-a-site-on-ipfs/screenshot_4.webp"
-            switch (bucket) {
-                case "a":
-                return "/static/images/how-to-host-a-site-on-ipfs/screenshot_2.webp";
-                case "b":
-                return "/static/images/how-to-host-a-site-on-ipfs/screenshot_3.webp";
-                default:
-                return "/static/images/how-to-host-a-site-on-ipfs/screenshot_1.webp";
-            }
-            })()}
-        />
-    </AnimatePresence>
 
     </div>
   );

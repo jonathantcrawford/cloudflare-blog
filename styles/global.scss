@@ -224,6 +224,10 @@ body {
     text-decoration: none;
 }
 
+.overflow-wrap-break-word {
+    overflow-wrap: break-word;
+}
+
 .white-space-nowrap {
     white-space: nowrap;
 }
@@ -321,12 +325,20 @@ body {
     flex-wrap: wrap;
 }
 
+.flex-wrap-reverse {
+    flex-wrap: wrap-reverse;
+}
+
 .flex-direction-row {
     flex-direction: row;
 }
 
 .flex-direction-column {
     flex-direction: column;
+}
+
+.justify-content-center {
+    justify-content: center;
 }
 
 .justify-content-space-evenly {
@@ -428,4 +440,20 @@ body {
 
 .border-color-cta-primary:hover {
     border-color: var(--color-cta-primary-hover);
+}
+
+
+.button {
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-cta-primary);
+    color: var(--color-0);
+    padding: 0.75rem;
+    font-family: var(--font-sans-3);
+    font-size: var(--font-size-5);
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--color-cta-primary-hover);
+    }
 }
