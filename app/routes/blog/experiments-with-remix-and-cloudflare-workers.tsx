@@ -125,9 +125,13 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 export default function Index() {
   const string = useLoaderData();
+
+  useEffect(() => {
+    console.log(string);
+  },[])
   
   return (
-    <code>{string}</code>
+    <Outlet context={string}/>
   );
 }
 
