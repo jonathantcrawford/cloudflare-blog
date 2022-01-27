@@ -104,6 +104,10 @@ body {
     background-color: var(--color-display-secondary);
 }
 
+.color-error {
+    color: var(--color-9);
+}
+
 .bg-color-1 {
     background-color: var(--color-1);
 }
@@ -221,7 +225,11 @@ body {
 }
 
 .white-space-nowrap {
-    white-space: nowrap;;
+    white-space: nowrap;
+}
+
+.white-space-normal {
+    white-space: normal;
 }
 
 .text-align-right {

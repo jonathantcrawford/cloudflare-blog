@@ -1,7 +1,3 @@
-import {
-  Link
-} from "remix";
-
 import { useSpring, animated } from "react-spring";
 
 import { About } from '~/components/About/About';
@@ -12,15 +8,6 @@ export default function Index() {
     from: { opacity: 0 },
     config: {
       duration: 600
-    }
-  });
-
-  const bounce = useSpring({ 
-    to: { y: "0%" }, 
-    from: { y: "100%" },
-    config: {
-      frequency: 0.4,
-      damping: 0.3
     }
   });
 
