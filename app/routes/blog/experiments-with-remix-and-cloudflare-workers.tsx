@@ -88,7 +88,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const { nft: { metadata }} = data;
 
 
-  return json({metadata, contract}, {
+  return json({metadata, contract, tokenId}, {
     headers: {
       "Set-Cookie": await unencryptedSession.commitSession(session),
     },
@@ -97,15 +97,15 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 };
 export default function Index() {
-  const {metadata, contract} = useLoaderData();
+  const {metadata, contract, tokenId} = useLoaderData();
 
   useEffect(() => {
-    console.log({metadata, contract})
+    console.log({metadata, contract, tokenId})
   }, [])
 
 
   return (
-    <Outlet context={{metadata, contract}}/>
+    <Outlet context={{metadata, contract, tokenId}}/>
   );
 }
 

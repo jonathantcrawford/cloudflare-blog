@@ -457,4 +457,12 @@ body {
         cursor: pointer;
         background-color: var(--color-cta-primary-hover);
     }
+
+    &:disabled {
+        pointer-events: none;
+        background-color: var(--color-0);
+        color: var(--color-6);
+
+        border: 1px solid var(--color-6);;
+    }
 }

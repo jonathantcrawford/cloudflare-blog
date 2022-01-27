@@ -9,7 +9,7 @@ import { CodeSnippet  } from "~/components/CodeSnippet/CodeSnippet";
 
 
 export function CookiesDemo() {
- const {metadata, contract} = useOutletContext<any>();
+ const {metadata, contract, tokenId} = useOutletContext<any>();
 
  const [currentKey, setCurrentKey] = useState<string>(metadata?.image);
 
@@ -43,6 +43,7 @@ export function CookiesDemo() {
         <button
             type="submit"
             className="button w-100p m-b-1rem"
+            disabled={tokenId == "9264"}
         >
             BitBurger #9264
         </button>
@@ -53,6 +54,7 @@ export function CookiesDemo() {
         <button
             type="submit"
             className="button w-100p m-b-1rem"
+            disabled={tokenId == "2558"}
         >
             BitBurger #2558
         </button>
