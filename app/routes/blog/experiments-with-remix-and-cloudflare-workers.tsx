@@ -78,32 +78,32 @@ export let loader: LoaderFunction = async ({ request }) => {
   session.set(SESSION_TOKEN_ID, tokenId);
   session.set(SESSION_CONTRACT_ADDR, contract);
 
-  //   // 0xd5dfb159788856f9fd5f897509d5a68b7b571ea8 - Tacoshi
-  //   // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000004
+    // 0xd5dfb159788856f9fd5f897509d5a68b7b571ea8 - Tacoshi
+    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000004
 
-  //   // 0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8 - Quesadileon Musck
-  //   // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000009
-  //   var payload: any = {
-  //     id: 1,
-  //     jsonrpc: "2.0",
-  //     method: "eth_call",
-  //     params: [
-  //         {
-  //             data: tokenId,
-  //             to: contract
-  //         }
-  //         , 
-  //         "latest"]
-  // }
+    // 0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8 - Quesadileon Musck
+    // 0x0e89341c0000000000000000000000000000000000000000000000000000000000000009
+    var payload: any = {
+      id: 1,
+      jsonrpc: "2.0",
+      method: "eth_call",
+      params: [
+          {
+              data: tokenId,
+              to: contract
+          }
+          , 
+          "latest"]
+  }
 
 
-  // const req = new Request(`https://mainnet.infura.io/v3/a593f3212732402f9033295ce9f3094b`, {
-  //     body: JSON.stringify(payload),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     method: 'POST'
-  //   })
+  const req = new Request(`https://mainnet.infura.io/v3/a593f3212732402f9033295ce9f3094b`, {
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    })
 
   // const res = await fetch(req);
   // const data: any = await res.json();

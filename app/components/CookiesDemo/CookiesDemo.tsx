@@ -28,7 +28,6 @@ export function CookiesDemo() {
         <button
             type="submit"
             className="button w-100p m-b-1rem"
-            disabled={contract == "0xd5dfb159788856f9fd5f897509d5a68b7b571ea8"}
         >
             Tacoshi Nakamoto
         </button>
@@ -39,7 +38,6 @@ export function CookiesDemo() {
         <button
             type="submit"
             className="button w-100p m-b-1rem"
-            disabled={contract=="0xD5Dfb159788856f9fd5F897509d5a68b7b571Ea8"}
         >
             Quesadelon Musk
         </button>
