@@ -113,9 +113,10 @@ export let loader: LoaderFunction = async ({ request }) => {
   const gatewayReq = new Request(url, {method: 'GET'});
   const metaReq = await fetch(gatewayReq);
   const metaData: any = await metaReq.json();
+  const string = JSON.stringify(metaData);
 
   return json(
-    { metaData, contract },
+    { contract, string },
     {
       headers: {
         "Set-Cookie": await unencryptedSession.commitSession(session),
@@ -125,10 +126,10 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Index() {
-  const { metaData, contract } = useLoaderData();
+  const { contract, string } = useLoaderData();
 
   return (
-    <Outlet context={{metaData, contract}}/>
+    <Outlet context={{contract, string}}/>
   );
 }
 

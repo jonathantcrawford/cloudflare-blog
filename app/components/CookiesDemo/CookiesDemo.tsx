@@ -5,17 +5,25 @@ import { Form, useOutletContext, useTransition } from "remix";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CodeSnippet  } from "~/components/CodeSnippet/CodeSnippet";
+import { useEffect } from "react";
 
 
 export function CookiesDemo() {
- const { metaData, contract } = useOutletContext<any>();
+ const { string } = useOutletContext<any>();
 
  const transition = useTransition();
 
  const {state} = transition;
 
+ 
  const isLoading = state !== "idle" ;
 
+
+ useEffect(() => {
+    console.log(string)
+ }, [string])
+
+ const metaData = {image: "/"}
 
 
   return (
@@ -43,7 +51,7 @@ export function CookiesDemo() {
         </button>
         </Form>
         <div style={{maxHeight: "300px", maxWidth: "100%", overflowY: 'scroll'}}>
-        <CodeSnippet fileName={contract} string={JSON.stringify(metaData, null, 2)}/>
+        {/*<CodeSnippet fileName={contract} string={JSON.stringify(metaData, null, 2)}/>*/}
         </div>
     </div>
     <div style={{display: 'flex', maxWidth: '500px', justifyContent: 'center',height: '504px', margin: '2rem'}}>
