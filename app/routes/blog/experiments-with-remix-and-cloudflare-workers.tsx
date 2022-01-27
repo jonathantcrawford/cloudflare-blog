@@ -1,5 +1,6 @@
 
    
+import { useEffect } from "react";
 import type { ActionFunction, LoaderFunction, MetaFunction } from "remix";
 import { json, Form, useLoaderData, Outlet } from "remix";
 
@@ -179,7 +180,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   }
 
   return json(
-    { metaData, contract },
+    { metaData, contract, url },
     {
       headers: {
         "Set-Cookie": await unencryptedSession.commitSession(session),
@@ -189,8 +190,10 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Index() {
-  const { metaData, contract } = useLoaderData();
-
+  const { metaData, contract, url } = useLoaderData();
+   useEffect(() => {
+    console.log(url);
+   }, [])
 
   return (
     <Outlet context={{metaData, contract}}/>
