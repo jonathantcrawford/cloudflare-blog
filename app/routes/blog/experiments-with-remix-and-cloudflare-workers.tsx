@@ -113,12 +113,16 @@ export let loader: LoaderFunction = async ({ request }) => {
   const gatewayReq = new Request(url, {method: 'GET'});
   const metaReq = await fetch(gatewayReq);
   const metaData: any = await metaReq.json();
-  const string = JSON.stringify(metaData);
 
-  return json(
-    { contract, string },
+
+  const body = JSON.stringify({metaData, contract})
+
+
+  return new Response(
+    body,
     {
       headers: {
+        "Content-Type": "application/json; charset=utf-8",
         "Set-Cookie": await unencryptedSession.commitSession(session),
       },
     }
@@ -126,10 +130,15 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Index() {
-  const { contract, string } = useLoaderData();
+  const body = useLoaderData();
+
+  const {metaData, contract} = body;
+
+
+ 
 
   return (
-    <Outlet context={{contract, string}}/>
+    <Outlet context={{contract, metaData}}/>
   );
 }
 
