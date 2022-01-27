@@ -112,75 +112,10 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   const gatewayReq = new Request(url, {method: 'GET'});
   const metaReq = await fetch(gatewayReq);
-  //const metaData: any = await metaReq.json();
-
-  const metaData = {
-    "name": "Rare Tacoshi Nakamoto",
-    "description": "They say he invented Bitcoin, but don’t believe that. The only crypto Tacoshi claims credit for is TACO!",
-    "image": "https://gateway.ipfs.io/ipfs/QmdBxaCNLHXbSouVN2z2xK9Rq9sM4Wmr99GJoQU6dCEv2Y",
-    "animation_url": "",
-    "audio_url": "",
-    "interactive_url": "",
-    "external_link": "https://opensea.io/collection/tacoshis-quest",
-    "attributes": [
-      {
-        "trait_type": "Pronouns",
-        "value": "He/Him"
-      },
-      {
-        "trait_type": "Rarity",
-        "value": "Rare"
-      },
-      {
-        "trait_type": "Taco Total",
-        "value": "48"
-      },
-      {
-        "trait_type": "Crunch",
-        "value": "4",
-        "display_type": "boost_number"
-      },
-      {
-        "trait_type": "Spice",
-        "value": "7",
-        "display_type": "boost_number"
-      },
-      {
-        "trait_type": "Cool",
-        "value": "15",
-        "display_type": "boost_number"
-      },
-      {
-        "trait_type": "Decay",
-        "value": "13",
-        "display_type": "boost_number"
-      },
-      {
-        "trait_type": "Versatility",
-        "value": "9",
-        "display_type": "boost_number"
-      },
-      {
-        "trait_type": "Max Supply",
-        "value": "10"
-      },
-      {
-        "trait_type": "Set",
-        "value": "Tacoshi's Quest"
-      },
-      {
-        "trait_type": "Farm",
-        "value": "Tacoshi's Rabbit Hole"
-      },
-      {
-        "trait_type": "Artist",
-        "value": "Blanka Boskov"
-      }
-    ]
-  }
+  const metaData: any = await metaReq.json();
 
   return json(
-    { metaData, contract, url },
+    { metaData, contract },
     {
       headers: {
         "Set-Cookie": await unencryptedSession.commitSession(session),
@@ -190,10 +125,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Index() {
-  const { metaData, contract, url } = useLoaderData();
-   useEffect(() => {
-    console.log(url);
-   }, [])
+  const { metaData, contract } = useLoaderData();
 
   return (
     <Outlet context={{metaData, contract}}/>
