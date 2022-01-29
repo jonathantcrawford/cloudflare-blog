@@ -90,10 +90,6 @@ export let loader: LoaderFunction = async ({ request }) => {
 export default function Index() {
   const { metadata, contract, tokenId } = useLoaderData();
 
-  useEffect(() => {
-    console.log({ metadata, contract, tokenId });
-  }, []);
-
   return <Outlet context={{ metadata, contract, tokenId }} />;
 }
 

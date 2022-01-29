@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "remix-app-template",
+  "name": "ssr-blog",
   "description": "",
   "license": "",
   "scripts": {

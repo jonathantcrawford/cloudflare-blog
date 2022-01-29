@@ -5,11 +5,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  LinksFunction,
 } from "remix";
 import { useSpring, animated } from "react-spring";
 
-import type { MetaFunction } from "remix";
+import type { MetaFunction, LinksFunction } from "remix";
 
 import { Header } from "~/components/Header/Header";
 import { Footer } from "~/components/Footer/Footer";
@@ -19,7 +18,6 @@ import rootStylesUrl from "~/styles/pages/root.css";
 
 import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
 import decemberFontStylesUrl from "~/styles/fonts/december.css";
-
 
 export const links: LinksFunction = () => {
   return [
