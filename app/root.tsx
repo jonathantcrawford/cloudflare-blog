@@ -5,40 +5,36 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  LinksFunction
+  LinksFunction,
 } from "remix";
 import { useSpring, animated } from "react-spring";
 
 import type { MetaFunction } from "remix";
 
-import { Header } from '~/components/Header/Header';
-import { Footer } from '~/components/Footer/Footer';
+import { Header } from "~/components/Header/Header";
+import { Footer } from "~/components/Footer/Footer";
 
 import globalStylesUrl from "~/styles/global.css";
 import rootStylesUrl from "~/styles/pages/root.css";
 
 import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
 import decemberFontStylesUrl from "~/styles/fonts/december.css";
-import saygonFontStylesUrl from "~/styles/fonts/saygon.css";
 
 
 export const links: LinksFunction = () => {
   return [
-    {rel: "icon", href: "/static/images/favicon.png" },
-    { rel: "stylesheet",  href: hamlinFontStylesUrl },
-    { rel: "stylesheet",  href: decemberFontStylesUrl },
-    { rel: "stylesheet",  href: globalStylesUrl },
+    { rel: "icon", href: "/static/images/favicon.png" },
+    { rel: "stylesheet", href: hamlinFontStylesUrl },
+    { rel: "stylesheet", href: decemberFontStylesUrl },
+    { rel: "stylesheet", href: globalStylesUrl },
     { rel: "stylesheet", href: rootStylesUrl },
-    
   ];
 };
-
-
 
 export const meta: MetaFunction = () => {
   const description = "My own dev blog for various topics.";
   const title = "Jon Crawford";
-  return { 
+  return {
     title,
     description,
     keywords: "developer,dev,blog",
@@ -54,29 +50,27 @@ export const meta: MetaFunction = () => {
     "twitter:creator": "@jon_t_craw",
     "twitter:site": "@jon_t_craw",
     "twitter:title": title,
-    "twitter:description": description
+    "twitter:description": description,
   };
 };
 
 export default function App() {
-
-  const fade = useSpring({ 
-    to: { opacity: 1 }, 
+  const fade = useSpring({
+    to: { opacity: 1 },
     from: { opacity: 0 },
     config: {
-      duration: 600
-    }
+      duration: 600,
+    },
   });
 
-  const bounce = useSpring({ 
-    to: { y: "0%" }, 
+  const bounce = useSpring({
+    to: { y: "0%" },
     from: { y: "100%" },
     config: {
       frequency: 0.4,
-      damping: 0.3
-    }
+      damping: 0.3,
+    },
   });
-
 
   return (
     <html lang="en" className="bg-color-primary">
@@ -89,13 +83,16 @@ export default function App() {
       </head>
       <body>
         <div className="grid grid-custom-root mn-h-100vh mx-w-100vw">
-          <animated.div  className="grid-area-header" style={fade}>
-            <Header/>
+          <animated.div className="grid-area-header" style={fade}>
+            <Header />
           </animated.div>
 
-          <Outlet/>
-          <animated.div  className="grid-area-footer grid-ps-center w-100p " style={bounce}>
-           <Footer/>
+          <Outlet />
+          <animated.div
+            className="grid-area-footer grid-ps-center w-100p "
+            style={bounce}
+          >
+            <Footer />
           </animated.div>
         </div>
         <ScrollRestoration />

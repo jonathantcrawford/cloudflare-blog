@@ -1,11 +1,11 @@
 ---
 meta:
-  emoji: '🔥'
-  title: 'Experiments with Remix and Cloudflare Workers'
-  subtitle: 'Does edge server side rendering live up to the hype?'
-  link: 'experiments-with-remix-and-cloudflare-workers'
-  author: 'Jon Crawford'
-  date: '01/30/2022'
+  emoji: "🔥"
+  title: "Experiments with Remix and Cloudflare Workers"
+  subtitle: "Does edge server side rendering live up to the hype?"
+  link: "experiments-with-remix-and-cloudflare-workers"
+  author: "Jon Crawford"
+  date: "01/30/2022"
 ---
 
 import { PostHeader } from "~/components/PostHeader/PostHeader";
@@ -16,35 +16,36 @@ import { CookiesDemo } from "~/components/CookiesDemo/CookiesDemo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-
-<PostHeader info={{
-  emoji: '🔥',
-  title: 'Experiments with Remix and Cloudflare Workers',
-  subtitle: 'Does edge server side rendering live up to the hype?',
-  link: 'experiments-with-remix-and-cloudflare-workers',
-  author: 'Jon Crawford',
-  date: '01/30/2022'
-}} />
-
-
+<PostHeader
+  info={{
+    emoji: "🔥",
+    title: "Experiments with Remix and Cloudflare Workers",
+    subtitle: "Does edge server side rendering live up to the hype?",
+    link: "experiments-with-remix-and-cloudflare-workers",
+    author: "Jon Crawford",
+    date: "01/30/2022",
+  }}
+/>
 
 # All about those cookies.
-The first time you fetched this page, you started a new session and 1 of 2 possible cookie value pairs were randomly chosen wihtin a Cloudflare Worker.
+
+The first time you fetched this page, you started a new session and 1 of 2 possible cookie value pairs were randomly chosen within a Cloudflare Worker.
 **I didn't ask for your consent to accept cookies, but I'm not storing them. Here are the values.**
 
 These are hexidecimal values used to lookup contracts on Ethereum.
+
 > 1. `contract=0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF8&tokenId=9264`
 > 2. `contract=0x0AE53C425F0725123205fd4CBDFB1Ac8240445cF&tokenId=2558`
 
-The value pair was then used to send a request to a dedicated Ethereum gateway API, (NFTPort). 
-Once the request to NFTPORT was complete, the Cloudflare Worker injected the contract meta data response into the markup and sent it back to you along with the cookie value.
-*I could have passed the values to you and made you use your client side Ethereum provider, but browser wallets are a UX nightmare.*
+The value pair was then used to send a request to a dedicated Ethereum gateway API, (NFTPort).
+Once the request to NFTPORT was complete, the Cloudflare Worker injected the contract meta data into the markup response and sent it back to you along with the cookie value.
+_I could have passed the values to you and made you use your client side Ethereum provider, but browser wallets are a UX nightmare._
 
- Check out which NFT was randomly chosen to be displayed!
+Check out which NFT was randomly chosen to be displayed!
+
 > 1. When you refresh the page, the same NFT will be displayed.
 > 2. When you click on the other option, you send a form request back to the server that sets your cookie and returns the appropriate metadata.
 
-
-
-<CookiesDemo/>
-*This page is far from optimized and is not an accurate performance representation of the Remix framework.*
+<CookiesDemo />
+*This page is far from optimized and is not an accurate performance representation
+of the Remix framework.*

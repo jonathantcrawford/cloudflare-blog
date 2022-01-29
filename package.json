@@ -13,6 +13,7 @@
     "dev:css": "yarn build:css && node-sass -rw ./styles -o ./app/styles --output-style compressed",
     "dev:remix": "remix watch",
     "dev:wrangler": "wrangler pages dev ./public --watch ./build",
+    "prettier": "prettier --write .",
     "start": "yarn dev:wrangler"
   },
   "dependencies": {
@@ -38,6 +39,7 @@
     "esbuild": "0.13.14",
     "node-sass": "^7.0.1",
     "npm-run-all": "^4.1.5",
+    "prettier": "2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.1.2",
     "wrangler": "alpha"

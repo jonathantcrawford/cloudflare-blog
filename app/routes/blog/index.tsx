@@ -6,7 +6,6 @@ import { PostLinks } from "~/components/PostLinks/PostLinks";
 // regular route modules, they will all be available for individual viewing
 // at /posts/a, for example.
 
-
 export default function Index() {
-  return <PostLinks/>
+  return <PostLinks />;
 }

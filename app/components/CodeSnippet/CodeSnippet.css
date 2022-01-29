@@ -1,26 +1,22 @@
 .code-snippet {
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
 
-
 .code-snippet code.file-name {
-    border-radius: 0.4vh 0.4vh 0vh 0vh;
-    background-color: var(--color-6);
-    color: var(--color-0);
-    padding: 0.6vh 0.6vh;
-    overflow-wrap: break-word;
+  border-radius: 0.4vh 0.4vh 0vh 0vh;
+  background-color: var(--color-6);
+  color: var(--color-0);
+  padding: 0.6vh 0.6vh;
+  overflow-wrap: break-word;
 }
 
 .code-snippet pre {
+  margin-top: 0em;
 
-    margin-top: 0em;
-    
-
-    border-radius: 0vh 0vh 0.4vh 0.4vh;
+  border-radius: 0vh 0vh 0.4vh 0.4vh;
 }
 
 .code-snippet pre code {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
