@@ -5,10 +5,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "remix";
 import { useSpring, animated } from "react-spring";
 
-import type { MetaFunction, LinksFunction } from "remix";
+import type { MetaFunction, LinksFunction, LoaderFunction } from "remix";
 
 import { Header } from "~/components/Header/Header";
 import { Footer } from "~/components/Footer/Footer";
@@ -52,7 +53,23 @@ export const meta: MetaFunction = () => {
   };
 };
 
+export const loader: LoaderFunction = ({request}) => {
+
+
+  const url = new URL(request.url)
+
+  return {
+    ENV: {
+      HTTP_PROTOCOL: url.protocol,
+      WS_PROTOCOL: url.protocol== "https:" ? "wss:" :"ws:",
+      HOST: url.host,
+      NODE_ENV: process.env.NODE_ENV
+    }
+  };
+}
+
 export default function App() {
+  const data = useLoaderData();
   const fade = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 },
@@ -94,6 +111,13 @@ export default function App() {
           </animated.div>
         </div>
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(
+              data.ENV
+            )}`
+          }}
+        />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>

@@ -5,7 +5,8 @@ export function WebSocketDemo() {
   const webSocket = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    webSocket.current = new WebSocket("ws://localhost:8788/web-socket");
+    //@ts-ignore
+    webSocket.current = new WebSocket(`${window.ENV.WS_PROTOCOL}//${window.ENV.HOST}/web-socket`);
     webSocket.current.onmessage = (message) => {
       setMessages((prev: any) => [...prev, message.data]);
     };
@@ -13,6 +14,7 @@ export function WebSocketDemo() {
   }, []);
 
   return (
+    <div>
     <p>
       <button
         type="button"
@@ -23,11 +25,12 @@ export function WebSocketDemo() {
       >
         Send message
       </button>
-      <ul>
-        {messages.map((message) => (
-          <li>{message}</li>
-        ))}
-      </ul>
     </p>
+    <ul>
+      {messages.map((message, idx) => (
+          <li key={idx}>{message}</li>
+        ))}
+    </ul>
+    </div>
   );
 }
