@@ -22,7 +22,7 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => {
   const title = "Jon Crawford | Blog";
-  const description = "My own dev blog for various topics.";
+  const description = "A blog for various web development topics.";
 
   return {
     title,
@@ -33,8 +33,8 @@ export const meta: MetaFunction = () => {
     "og:title": title,
     "og:description": description,
     "og:image:type": "image/png",
-    "og:image": "https://joncrawford.me/static/images/og-preview.png",
-    "twitter:image": "https://joncrawford.me/static/images/og-preview.png",
+    "og:image": "https://joncrawford.me/static/images/blog/og-preview.png",
+    "twitter:image": "https://joncrawford.me/static/images/blog/og-preview.png",
     "twitter:url": "https://joncrawford.me/blog",
     "twitter:card": "summary_large_image",
     "twitter:creator": "@jon_t_craw",

@@ -34,9 +34,9 @@ export const meta: MetaFunction = () => {
     "og:description": description,
     "og:image:type": "image/png",
     "og:image":
-      "https://joncrawford.me/static/images/experiments-with-remix-and-cloudflare-workers/og-preview.png",
+      "https://joncrawford.me/static/images/blog/experiments-with-remix-and-cloudflare-workers/og-preview.png",
     "twitter:image":
-      "https://joncrawford.me/static/images/experiments-with-remix-and-cloudflare-workers/og-preview.png",
+      "https://joncrawford.me/static/images/blog/experiments-with-remix-and-cloudflare-workers/og-preview.png",
     "twitter:url":
       "https://joncrawford.me/blog/experiments-with-cloudflare-workers",
     "twitter:card": "summary_large_image",

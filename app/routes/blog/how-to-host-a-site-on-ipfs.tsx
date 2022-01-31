@@ -24,9 +24,9 @@ export const meta: MetaFunction = () => {
     "og:description": description,
     "og:image:type": "image/png",
     "og:image":
-      "https://joncrawford.me/static/images/how-to-host-a-site-on-ipfs/og-preview.png",
+      "https://joncrawford.me/static/images/blog/how-to-host-a-site-on-ipfs/og-preview.png",
     "twitter:image":
-      "https://joncrawford.me/static/images/how-to-host-a-site-on-ipfs/og-preview.png",
+      "https://joncrawford.me/static/images/blog/how-to-host-a-site-on-ipfs/og-preview.png",
     "twitter:url": "https://joncrawford.me/blog/how-to-host-a-site-on-ipfs",
     "twitter:card": "summary_large_image",
     "twitter:creator": "@jon_t_craw",
