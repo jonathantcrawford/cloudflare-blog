@@ -32,13 +32,13 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 # Remix might be more than a framework flavor of the month.
 Web developers are constantly inundated with new tools to adopt.
 Sometimes, they offer slightly more efficient ways of building things, but at a high cost of time and effort.
-It's at this point when a developer asks themselves, what features does it provide and how steep is the learning curve?
+It's at this point when a developer asks themselves, _what features does it provide and how steep is the learning curve?_
 
 ## What's the value proposition?
 This is what I thought to myself when I first found out about the Remix React framework.
-What does Remix offer that can't already be accomplished with my existing toolset? 
+_What does Remix offer that can't already be accomplished with my existing toolset?_
 
-_Server-Side Rendering_
+**Server-Side Rendering**
 
 After building and maintaining single page applications I have grown to miss server side functionality for front-end logic.
 Also, SSR can do pretty much everything that CSR can do, but not the other way around.
@@ -74,7 +74,7 @@ However, at this time Next.js only supports SSR and SSG.
 It was created by CloudFlare and is designed to be an ESSR framework. It looks alot like Next.js, but it is very new and has limited community resources.
 
 Remix has some powerful features that sets it apart from Next.js and Flareact.
-- **Nested Routes** - By far one of the coolest features. Each route is its own component. The component name is the route and the directory is the path.
+- **Nested Routes** - Each route is its own component. The component name is the route and the directory is the path.
   ```
   ├── 404.js
   ├── contact.js
@@ -102,13 +102,13 @@ Remix has some powerful features that sets it apart from Next.js and Flareact.
 - **Built In MDX Support** - A syntax that allows you to use JSX/React components within a markdown file.
   Great for adding interactivity or widgets within long form content. (Ideal for blogs and documentation!)
 - **Error Boundaries** - An error component can be defined for each route. So if a panel in the dashboard had an error at least the rest of the UI will render just fine.
-- **Scroll Restoration** - The scroll position is persisted between page refreshes.
+- **Scroll Restoration** - The scroll position is persisted between page refreshes. (For me, it works on desktop, but not on mobile.)
 - **Deployment Templates** - Remix can be deployed as an SSR or ESSR application. [Remix Deployment Types](https://remix.run/docs/en/v1/guides/deployment)
 
 ## It all sounds great, how hard is it to learn?
 Existing React knowledge will benefit you greatly, but you are entering a different paradigm.
 If you have only built CSR based apps before, some of the concepts will be totally new.
-Routing and performance optimization might through you for a loop at first.
+Routing and performance optimization might throw you for a loop at first.
 If you get stuck, Remix has pretty good documentation and the community is growing fast.
 
 ### 💅 Styling
@@ -120,7 +120,7 @@ I see the argument for using a utility first CSS framework, but I'm still skepti
 It's on my todo list for things to explore.
 
 Alternatively, you can use styled components. 
-They claim it adds a little extra rendering overhead, but in this case productivity over performance might be worth it.
+They claim it adds a little extra rendering overhead, but in this, case productivity over performance might be worth it.
 
 ### ☁️ Deployment
 If you choose to go the ESSR route, getting your CI/CD will seem weird at first. 
@@ -128,9 +128,9 @@ Each route is effectively converted into a serverless function which is defined 
 Remix gives you deployment templates for several different providers, but each cloud provider will most likely come with their own limitations.
 
 ## Still not convinced?
-Here are some demos to showcase some cool things you can do with Remix and CloudFlare Workers.
+Here are some demos to showcase some cool things you can do with Remix and Cloudflare Workers.
 This post was written in `.mdx` which allowed me to write the demos as react components
-and include them in my markdown by referencing them inline, like `<CookiesDemo/>`.
+and include them in my markdown by referencing them inline via `<CookiesDemo/>`.
 
 
 ### NFTs + 🍪's
