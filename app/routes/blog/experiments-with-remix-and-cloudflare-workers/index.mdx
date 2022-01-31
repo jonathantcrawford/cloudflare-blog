@@ -29,7 +29,108 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
   }}
 />
 
-# All about those cookies.
+# Remix might be more than a framework flavor of the month.
+Web developers are constantly inundated with new tools to adopt.
+Sometimes, they offer slightly more efficient ways of building things, but at a high cost of time and effort.
+It's at this point when a developer asks themselves, what features does it provide and how steep is the learning curve?
+
+## What's the value proposition?
+This is what I thought to myself when I first found out about the Remix React framework.
+What does Remix offer that can't already accomplish with my existing toolset? Server-Side Rendering.
+After building and maintaining single page applications I have grown to miss server side functionality for front-end logic.
+Also, SSR can do pretty much everything that CSR can do, but not the other way around.
+
+> An overview of different rendering methods
+>
+> **CSR (Client-Side Rendering)** Also known as a SPA (Single Page Application), is a bundle of code served from one location. 
+> Applications are compiled into bundles in advanced and are then served from a location.
+> A page request that loads a SPA returns a relatively large bundle of javascript. The client then renders the page once it receives the minimum amount of code required.
+> This means slow initial load times, but subsequent user actions are snappy.
+> The other downside is that reconfiguring the application requires rebuilding.
+>
+> **SSR (Server-Side Rendering)** When an application is server side rendered, each request is compiled JIT and the result is returned in the reponse.
+> This means that the server can dynamically inject or render the page based on the request parameters, session state, cookie values and authentication.
+> Additionally, initial first paints to the client happen much quicker than with a SPA
+> This is nice, but it requires hosting your application on a VM or server. Which means you will be paying your cloud provider for server hosting.
+> There are many strategies and solutions out there to optimize server cost through dynamic scaling and vm orchestration (such as Kubernetes), but they are very complex.
+>
+> **SSG (Static Site Generation)** This is sort of similar to SSR, however each page is pre rendered at build time. 
+> Helps reduce server costs, but removes the dynamic capabilities that SSR offers.
+>
+> **ESSR (Edge Server Side Rendering)** This is the new kid on the block. It is essentially the same as SSR except, without a dedicated server. 
+> Instead of running an application on a server waiting for requests, each route is defined as a serverless function. 
+> When a request is made to a route, a serverless function is invoked and the request can be handled _server side_ so to speak. 
+> What you end up with is a cheaper alternative to SSR.
+
+Server side rendering is definitely worth learning, but there are other SSR React frameworks, so why Remix? 
+
+[Next.js](https://nextjs.org/) has been around for longer and is a great framework.
+However, at this time Next.js only supports SSR and SSG.
+
+[Flareact](https://flareact.com/docs/getting-started) is another interesting option.
+It was created by CloudFlare and is designed to be an ESSR framework. It looks alot like Next.js, but it is very new and has limited community resources.
+
+Remix has some powerful features that sets it apart from Next.js and Flareact.
+- Nested Routes - By far one of the coolest features. Each route is its own component. The component name is the route and the directory is the path.
+  ```
+  ├── 404.js
+  ├── contact.js
+  ├── invoices
+  │   ├── $id.edit.js
+  │   ├── $id.js
+  │   └── late.js
+  ├── invoices.js
+  └── invoices.new.js
+  ```
+  Not only does this make for a clear application structure in code. It also has huge performance benefits.
+  When a route is requested the server can inject data into the component based on the request.
+  When navigating to a nested route, the child route is rendered within the parent routes `<Outlet/>`.
+  The component defined at the `/invoices` route provides a layout for both `/invoices/late` and `/invoices/2543`. 
+  Navigating between the two sub routes is fast because the parent is already loaded and is just replacing the contents of its `<Outlet/>`.
+- Clear Code Splitting - Nested routes become perfect boundaries for code splitting. 
+  Each route is a component that is served behind a request. 
+  Dependencies can be optimized and included at the route level or component level, whichever provides the best perceived performance.
+  Most importantly, when a nested route is requested, each code chunk is requested simultaneously from the client. 
+  The client receives the required chunks much faster and therefore renders the full page faster than a SPA.
+- Forms - Form handling on SPA are kind of messy. Does `event.preventDefault()` sound familiar? With SSR you can write HTML forms the way they were intended.
+  The event onSubmit has meaning again. Oh, and when you submit a form you are submitting a `POST` request back to the same route that the component was served from.
+  Right above your component definition in remix you can define an `action()` to handle the request server side. 
+  While that request is taking place you can use the  `useTransition` hook client side to update the UI based on the submission status.
+- Built In MDX Support - A syntax that allows you to use JSX/React components within a markdown file.
+  Great for adding interactivity or widgets within long form content. (Ideal for blogs and documentation!)
+- Error Boundaries - An error component can be defined for each route. So if a panel in the dashboard had an error at least the rest of the UI will render just fine.
+- Scroll Restoration - The scroll position is persisted between page refreshes.
+- Deployment Templates - Remix can be deployed as an SSR or ESSR application. [Remix Deployment Types](https://remix.run/docs/en/v1/guides/deployment)
+
+## It all sounds great, how hard is it to learn?
+Existing React knowledge will benefit you greatly, but you are entering a different paradigm.
+If you have only built CSR based apps before, some of the concepts will be totally new.
+Routing and performance optimization might through you for a loop at first.
+If you get stuck, Remix has pretty good documentation and the community is growing fast.
+
+### 💅 Styling
+I'll be honest, there is a slight learning curve, in terms of CSS.
+There is no built in support for CSS modules or CSS preprocessors. 
+Adding a CSS preprocessor is simple enough, but Remix suggests rethinking your CSS.
+TailwindCSS is the suggested tool to use for your CSS. 
+I see the argument for using a utility first CSS framework, but I'm still skeptical.
+It's on my todo list for things to explore.
+
+Alternatively, you can use styled components. 
+They claim it adds a little extra rendering overhead, but in this case productivity over performance might be worth it.
+
+### ☁️ Deployment
+If you choose to go the ESSR route, getting your CI/CD will seem weird at first. 
+Each route is effectively converted into a serverless function which is defined differently for each cloud provider.
+Remix gives you deployment templates for several different providers, but each cloud provider will most likely come with their own limitations.
+
+## Still not convinced?
+Here are some demos to showcase some cool things you can do with Remix and CloudFlare Workers.
+This post was written in `.mdx` which allowed me to write the demos as react components
+and include them in my markdown by referencing them inline, like `<CookiesDemo/>`.
+
+
+### NFTs + 🍪's
 
 The first time you fetched this page, you started a new session and 1 of 2 possible cookie value pairs were randomly chosen within a Cloudflare Worker.
 **I didn't ask for your consent to accept cookies, but I'm not storing them. Here are the values.**
@@ -46,17 +147,21 @@ _I could have passed the values to you and made you use your client side Ethereu
 Check out which NFT was randomly chosen to be displayed!
 
 > 1. When you refresh the page, the same NFT will be displayed.
-> 2. When you click on the other option, you send a form request back to the server that sets your cookie and returns the appropriate metadata.
+> 2. When you click on the other option, you send a form request back to the server that sets your cookie server side, makes a request to NFTPort and returns the appropriate metadata.
 
 <CookiesDemo />
 
 
-# Websockets for the win.
+### WebSockets > Polling
+This is a simple example of a WebSocket. When you click on the button "Open WebSocket", your client attempts to create a new WebSocket at `joncrawford.me/web-socket`.
+The `/web-socket` end point is not a Remix route, but a serverless cloudflare worker route. 
+When it receives a request to open a websocket connection, 
+1. It establishes a connection with your client.
+2. Then sends 5 messages at an interval of 500ms. Where each message includes the origin of where the websocket connection was established from and the timestamp of the message.
+3. Then the connection is closed.
+
 
 <WebSocketDemo/>
 
 *This page is far from optimized and is not an accurate performance representation
 of the Remix framework.*
-
-
-# Scroll Restoration
