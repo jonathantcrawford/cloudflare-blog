@@ -29,8 +29,6 @@ export const links: LinksFunction = () => {
   ];
 };
 
-
-
 export const loader: LoaderFunction = ({ request }) => {
   const url = new URL(request.url);
 

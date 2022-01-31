@@ -5,9 +5,7 @@ import { useSpring, animated } from "react-spring";
 import { About } from "~/components/About/About";
 
 export const links: LinksFunction = () => {
-  return [
-    { rel: "icon", href: "/static/images/favicon.png" },
-  ];
+  return [{ rel: "icon", href: "/static/images/favicon.png" }];
 };
 
 export const meta: MetaFunction = () => {

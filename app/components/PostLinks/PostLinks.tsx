@@ -18,7 +18,6 @@ import { NavLink } from "remix";
 // }
 
 export const PostLinks = () => {
-
   return (
     <div className="w-100p">
       <div className="m-t-2em font-sans-3 font-size-4 font-w-400 color-display-primary m-b-1_5em p-b-0_5em border-bottom-w-2px border-bottom-solid order-bottom-color-display-primary">
