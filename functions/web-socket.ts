@@ -29,14 +29,24 @@ export async function onRequest(context: any) {
   //@ts-ignore
   server.accept();
   server.send("connection established");
-  server.addEventListener("message", (event) => {
-    server.send(
-      JSON.stringify({
-        location: formattedLocation,
-        timestamp: new Date().toISOString(),
-      })
-    );
-  });
+
+  let count = 0;
+  let interval: any;
+  interval = setInterval(() => {
+    if (count < 5) {
+      server.send(
+        JSON.stringify({
+          location: formattedLocation,
+          timestamp: new Date().toISOString(),
+        })
+      );
+      count++;
+    } else {
+      server.send("connection closed");
+      server.close(1000);
+      clearInterval(interval);
+    }
+  }, 500);
 
   return new Response(null, {
     status: 101,

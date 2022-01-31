@@ -53,20 +53,18 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export const loader: LoaderFunction = ({request}) => {
-
-
-  const url = new URL(request.url)
+export const loader: LoaderFunction = ({ request }) => {
+  const url = new URL(request.url);
 
   return {
     ENV: {
       HTTP_PROTOCOL: url.protocol,
-      WS_PROTOCOL: url.protocol== "https:" ? "wss:" :"ws:",
+      WS_PROTOCOL: url.protocol == "https:" ? "wss:" : "ws:",
       HOST: url.host,
-      NODE_ENV: process.env.NODE_ENV
-    }
+      NODE_ENV: process.env.NODE_ENV,
+    },
   };
-}
+};
 
 export default function App() {
   const data = useLoaderData();
@@ -113,9 +111,7 @@ export default function App() {
         <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(
-              data.ENV
-            )}`
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
           }}
         />
         <Scripts />

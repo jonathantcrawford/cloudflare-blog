@@ -4,33 +4,49 @@ export function WebSocketDemo() {
   const [messages, setMessages] = useState<string[]>([]);
   const webSocket = useRef<WebSocket | null>(null);
 
-  useEffect(() => {
+  const [webSocketIsConnected, setWebSocketIsConnected] = useState(false);
+
+  const openConnection = () => {
+    setWebSocketIsConnected(true);
+    setMessages([]);
     //@ts-ignore
-    webSocket.current = new WebSocket(`${window.ENV.WS_PROTOCOL}//${window.ENV.HOST}/web-socket`);
+    webSocket.current = new WebSocket(
+      `${window.ENV.WS_PROTOCOL}//${window.ENV.HOST}/web-socket`
+    );
     webSocket.current.onmessage = (message) => {
       setMessages((prev: any) => [...prev, message.data]);
+      if (message.data == "connection closed") closeConnection();
     };
-    return () => webSocket.current?.close();
+  };
+
+  const closeConnection = () => {
+    setWebSocketIsConnected(false);
+    webSocket.current?.close(1000);
+  };
+
+  useEffect(() => {
+    return () => webSocket.current?.close(1000);
   }, []);
 
   return (
-    <div>
-    <p>
-      <button
-        type="button"
-        className="button w-100p m-b-1rem"
-        onClick={() => {
-          webSocket.current?.send("hello");
-        }}
-      >
-        Send message
-      </button>
-    </p>
-    <ul>
-      {messages.map((message, idx) => (
+    <div className="flex flex-direction-column">
+      <p>
+        <button
+          type="button"
+          className="button w-100p m-b-1rem"
+          onClick={() => openConnection()}
+          disabled={webSocketIsConnected}
+        >
+          {webSocketIsConnected
+            ? "...WebSocket is connected"
+            : "Open WebSocket Connection"}
+        </button>
+      </p>
+      <ul>
+        {messages.map((message, idx) => (
           <li key={idx}>{message}</li>
         ))}
-    </ul>
+      </ul>
     </div>
   );
 }
