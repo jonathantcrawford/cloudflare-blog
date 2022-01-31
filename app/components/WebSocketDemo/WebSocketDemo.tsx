@@ -9,8 +9,9 @@ export function WebSocketDemo() {
   const openConnection = () => {
     setWebSocketIsConnected(true);
     setMessages([]);
-    //@ts-ignore
+
     webSocket.current = new WebSocket(
+      //@ts-ignore
       `${window.ENV.WS_PROTOCOL}//${window.ENV.HOST}/web-socket`
     );
     webSocket.current.onmessage = (message) => {

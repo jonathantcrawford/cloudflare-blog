@@ -4,4 +4,6 @@ node_modules
 /build
 /public/build
 
+public/static/.DS_Store
+public/static/fonts/.DS_Store
 public/static/images/.DS_Store
