@@ -9,7 +9,7 @@ import {
 } from "remix";
 import { useSpring, animated } from "react-spring";
 
-import type { MetaFunction, LinksFunction, LoaderFunction } from "remix";
+import type { LinksFunction, LoaderFunction } from "remix";
 
 import { Header } from "~/components/Header/Header";
 import { Footer } from "~/components/Footer/Footer";
@@ -22,7 +22,6 @@ import decemberFontStylesUrl from "~/styles/fonts/december.css";
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "icon", href: "/static/images/favicon.png" },
     { rel: "stylesheet", href: hamlinFontStylesUrl },
     { rel: "stylesheet", href: decemberFontStylesUrl },
     { rel: "stylesheet", href: globalStylesUrl },
@@ -30,28 +29,7 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const meta: MetaFunction = () => {
-  const description = "My own dev blog for various topics.";
-  const title = "Jon Crawford";
-  return {
-    title,
-    description,
-    keywords: "developer,dev,blog",
-    "og:url": "https://joncrawford.me/",
-    "og:type": "website",
-    "og:title": title,
-    "og:description": description,
-    "og:image:type": "image/png",
-    "og:image": "https://joncrawford.me/static/images/og-preview.png",
-    "twitter:image": "https://joncrawford.me/static/images/og-preview.png",
-    "twitter:url": "https://joncrawford.me/",
-    "twitter:card": "summary_large_image",
-    "twitter:creator": "@jon_t_craw",
-    "twitter:site": "@jon_t_craw",
-    "twitter:title": title,
-    "twitter:description": description,
-  };
-};
+
 
 export const loader: LoaderFunction = ({ request }) => {
   const url = new URL(request.url);
