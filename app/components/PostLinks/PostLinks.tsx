@@ -37,7 +37,7 @@ export const PostLinks = () => {
             {"Does edge server side rendering live up to the hype?"}
           </span>
           <span className="font-size-6 font-w-300 font-sans-3 text-align-right">
-            {"01/30/2022"}
+            {"02/02/2022"}
           </span>
         </NavLink>
         <NavLink

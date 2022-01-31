@@ -5,7 +5,7 @@ meta:
   subtitle: "Does edge server side rendering live up to the hype?"
   link: "experiments-with-remix-and-cloudflare-workers"
   author: "Jon Crawford"
-  date: "01/30/2022"
+  date: "02/02/2022"
 ---
 
 import { PostHeader } from "~/components/PostHeader/PostHeader";
@@ -25,7 +25,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
     subtitle: "Does edge server side rendering live up to the hype?",
     link: "experiments-with-remix-and-cloudflare-workers",
     author: "Jon Crawford",
-    date: "01/30/2022",
+    date: "02/02/2022",
   }}
 />
 
@@ -36,7 +36,10 @@ It's at this point when a developer asks themselves, what features does it provi
 
 ## What's the value proposition?
 This is what I thought to myself when I first found out about the Remix React framework.
-What does Remix offer that can't already accomplish with my existing toolset? Server-Side Rendering.
+What does Remix offer that can't already be accomplished with my existing toolset? 
+
+_Server-Side Rendering_
+
 After building and maintaining single page applications I have grown to miss server side functionality for front-end logic.
 Also, SSR can do pretty much everything that CSR can do, but not the other way around.
 
@@ -71,7 +74,7 @@ However, at this time Next.js only supports SSR and SSG.
 It was created by CloudFlare and is designed to be an ESSR framework. It looks alot like Next.js, but it is very new and has limited community resources.
 
 Remix has some powerful features that sets it apart from Next.js and Flareact.
-- Nested Routes - By far one of the coolest features. Each route is its own component. The component name is the route and the directory is the path.
+- **Nested Routes** - By far one of the coolest features. Each route is its own component. The component name is the route and the directory is the path.
   ```
   ├── 404.js
   ├── contact.js
@@ -87,20 +90,20 @@ Remix has some powerful features that sets it apart from Next.js and Flareact.
   When navigating to a nested route, the child route is rendered within the parent routes `<Outlet/>`.
   The component defined at the `/invoices` route provides a layout for both `/invoices/late` and `/invoices/2543`. 
   Navigating between the two sub routes is fast because the parent is already loaded and is just replacing the contents of its `<Outlet/>`.
-- Clear Code Splitting - Nested routes become perfect boundaries for code splitting. 
+- **Clear Code Splitting** - Nested routes become perfect boundaries for code splitting. 
   Each route is a component that is served behind a request. 
   Dependencies can be optimized and included at the route level or component level, whichever provides the best perceived performance.
   Most importantly, when a nested route is requested, each code chunk is requested simultaneously from the client. 
   The client receives the required chunks much faster and therefore renders the full page faster than a SPA.
-- Forms - Form handling on SPA are kind of messy. Does `event.preventDefault()` sound familiar? With SSR you can write HTML forms the way they were intended.
+- **Forms** - Form handling on SPA are kind of messy. Does `event.preventDefault()` sound familiar? With SSR you can write HTML forms the way they were intended.
   The event onSubmit has meaning again. Oh, and when you submit a form you are submitting a `POST` request back to the same route that the component was served from.
   Right above your component definition in remix you can define an `action()` to handle the request server side. 
   While that request is taking place you can use the  `useTransition` hook client side to update the UI based on the submission status.
-- Built In MDX Support - A syntax that allows you to use JSX/React components within a markdown file.
+- **Built In MDX Support** - A syntax that allows you to use JSX/React components within a markdown file.
   Great for adding interactivity or widgets within long form content. (Ideal for blogs and documentation!)
-- Error Boundaries - An error component can be defined for each route. So if a panel in the dashboard had an error at least the rest of the UI will render just fine.
-- Scroll Restoration - The scroll position is persisted between page refreshes.
-- Deployment Templates - Remix can be deployed as an SSR or ESSR application. [Remix Deployment Types](https://remix.run/docs/en/v1/guides/deployment)
+- **Error Boundaries** - An error component can be defined for each route. So if a panel in the dashboard had an error at least the rest of the UI will render just fine.
+- **Scroll Restoration** - The scroll position is persisted between page refreshes.
+- **Deployment Templates** - Remix can be deployed as an SSR or ESSR application. [Remix Deployment Types](https://remix.run/docs/en/v1/guides/deployment)
 
 ## It all sounds great, how hard is it to learn?
 Existing React knowledge will benefit you greatly, but you are entering a different paradigm.
@@ -131,7 +134,6 @@ and include them in my markdown by referencing them inline, like `<CookiesDemo/>
 
 
 ### NFTs + 🍪's
-
 The first time you fetched this page, you started a new session and 1 of 2 possible cookie value pairs were randomly chosen within a Cloudflare Worker.
 **I didn't ask for your consent to accept cookies, but I'm not storing them. Here are the values.**
 
@@ -153,11 +155,13 @@ Check out which NFT was randomly chosen to be displayed!
 
 
 ### WebSockets > Polling
-This is a simple example of a WebSocket. When you click on the button "Open WebSocket", your client attempts to create a new WebSocket at `joncrawford.me/web-socket`.
+This is a simple example of a WebSocket. 
+
+When you click on the button "Open WebSocket", your client attempts to create a new WebSocket at `joncrawford.me/web-socket`.
 The `/web-socket` end point is not a Remix route, but a serverless cloudflare worker route. 
-When it receives a request to open a websocket connection, 
+When it receives a request to open a websocket connection:
 1. It establishes a connection with your client.
-2. Then sends 5 messages at an interval of 500ms. Where each message includes the origin of where the websocket connection was established from and the timestamp of the message.
+2. Then sends 5 messages at an interval of 500ms. (Where each message includes the request origin and the timestamp of the message.)
 3. Then the connection is closed.
 
 
