@@ -1,5 +1,10 @@
 import type { LinksFunction, MetaFunction } from "remix";
 import { Outlet } from "remix";
+import { useSpring, animated } from "react-spring";
+
+
+import markdownStyles from "~/styles/markdown.css";
+import { links as codeSnippetLinks } from "~/components/CodeSnippet/CodeSnippet";
 
 export const links: LinksFunction = () => {
   return [
@@ -7,6 +12,8 @@ export const links: LinksFunction = () => {
       rel: "icon",
       href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>",
     },
+    ...codeSnippetLinks(),
+    { rel: "stylesheet", href: markdownStyles}
   ];
 };
 
@@ -36,6 +43,19 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export default function Index() {
-  return <Outlet />;
+export default function HowToHostASiteOnIPFS() {
+
+  const fade = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: {
+      duration: 600,
+    },
+  });
+
+  return (
+    <animated.div className="grid-area-content w-100p markdown" style={fade}>
+      <Outlet/>
+    </animated.div>
+  )
 }

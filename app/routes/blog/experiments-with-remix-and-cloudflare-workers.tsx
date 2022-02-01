@@ -5,6 +5,10 @@ import type {
   MetaFunction,
 } from "remix";
 import { json, useLoaderData, Outlet, useCatch } from "remix";
+import { useSpring, animated } from "react-spring";
+
+import markdownStyles from "~/styles/markdown.css";
+import { links as codeSnippetLinks } from "~/components/CodeSnippet/CodeSnippet";
 
 import { unencryptedSession } from "../../sessions.server";
 
@@ -18,6 +22,8 @@ export const links: LinksFunction = () => {
       rel: "icon",
       href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔥</text></svg>",
     },
+    ...codeSnippetLinks(),
+    { rel: "stylesheet", href: markdownStyles}
   ];
 };
 
@@ -119,10 +125,23 @@ export let loader: LoaderFunction = async ({ request }) => {
     }
   );
 };
-export default function Index() {
-  const { metadata, contract, tokenId } = useLoaderData();
 
-  return <Outlet context={{ metadata, contract, tokenId }} />;
+
+export default function ExperimentsWithRemixAndCloudflareWorkers() {
+  const { metadata, contract, tokenId } = useLoaderData();
+  const fade = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    config: {
+      duration: 600,
+    },
+  });
+
+  return (
+    <animated.div className="grid-area-content w-100p markdown" style={fade}>
+      <Outlet context={{ metadata, contract, tokenId }} />
+    </animated.div>
+  )
 }
 
 export function CatchBoundary() {

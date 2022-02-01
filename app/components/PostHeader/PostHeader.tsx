@@ -4,6 +4,7 @@ export const PostHeader = ({ info }: any) => {
   return (
     <>
       <NavLink
+        prefetch="intent"
         to="/blog"
         className="ignore-markdown block text-dec-none color-cta-primary color-cta-primary-hover font-sans-3 font-size-5 m-b-1rem"
       >{`< all posts`}</NavLink>

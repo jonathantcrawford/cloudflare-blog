@@ -18,7 +18,7 @@
 
   --color-text-primary: #ffffff;
 
-  --color-display-primary: var(--color-5);
+  --color-display-primary: var(--color-6);
   --color-display-secondary: var(--color-6);
 
   // bg-colors
@@ -452,5 +452,27 @@ body {
     color: var(--color-6);
 
     border: 1px solid var(--color-6);
+  }
+}
+
+
+.post-link {
+  padding: 3vmin;
+  border-radius: 2vmin;
+  border-width: 0.05vmin;
+  border-style: solid;
+  border-color: var(--color-cta-primary);
+  color: var(--color-cta-primary);
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color-cta-primary-hover);
+    border-color: var(--color-cta-primary-hover);
+  }
+
+  &.post-link-loading {
+    color: var(--color-6);
+    border-color: var(--color-6);
   }
 }
