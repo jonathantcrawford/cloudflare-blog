@@ -10,7 +10,7 @@ import { useSpring, animated } from "react-spring";
 import markdownStyles from "~/styles/markdown.css";
 import { links as codeSnippetLinks } from "~/components/CodeSnippet/CodeSnippet";
 
-import { unencryptedSession } from "../../sessions.server";
+import { unencryptedSession } from "~/sessions.server";
 
 let SESSION_TOKEN_ID = "SESSION_TOKEN_ID";
 

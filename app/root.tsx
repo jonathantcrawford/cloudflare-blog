@@ -7,27 +7,9 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "remix";
-import { useSpring, animated } from "react-spring";
 
 import type { LinksFunction, LoaderFunction } from "remix";
 
-import { Header } from "~/components/Header/Header";
-import { Footer } from "~/components/Footer/Footer";
-
-import globalStylesUrl from "~/styles/global.css";
-import rootStylesUrl from "~/styles/pages/root.css";
-
-import hamlinFontStylesUrl from "~/styles/fonts/hamlin.css";
-import decemberFontStylesUrl from "~/styles/fonts/december.css";
-
-export const links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: hamlinFontStylesUrl },
-    { rel: "stylesheet", href: decemberFontStylesUrl },
-    { rel: "stylesheet", href: globalStylesUrl },
-    { rel: "stylesheet", href: rootStylesUrl },
-  ];
-};
 
 export const loader: LoaderFunction = ({ request }) => {
   const url = new URL(request.url);
@@ -44,25 +26,8 @@ export const loader: LoaderFunction = ({ request }) => {
 
 export default function App() {
   const data = useLoaderData();
-  const fade = useSpring({
-    to: { opacity: 1 },
-    from: { opacity: 0 },
-    config: {
-      duration: 600,
-    },
-  });
-
-  const bounce = useSpring({
-    to: { y: "0%" },
-    from: { y: "100%" },
-    config: {
-      frequency: 0.4,
-      damping: 0.3,
-    },
-  });
-
   return (
-    <html lang="en" className="bg-color-primary">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -71,19 +36,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="grid grid-custom-root mn-h-100vh mx-w-100vw">
-          <animated.div className="grid-area-header" style={fade}>
-            <Header />
-          </animated.div>
-
-          <Outlet />
-          <animated.div
-            className="grid-area-footer grid-ps-center w-100p "
-            style={bounce}
-          >
-            <Footer />
-          </animated.div>
-        </div>
+        <Outlet/>
         <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
